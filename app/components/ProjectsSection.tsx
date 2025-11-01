@@ -26,10 +26,9 @@ export default function ProjectsSection() {
                   <FadeInView delay={0.1}>
                     <div>
                       <p className="text-gray-200 text-base/7">
-                        A personalized dashboard built with Laravel. Includes
-                        weather, news and exchange rate APIs; A to-do list,
-                        bookmarks and a calendar. Currently only supports
-                        Egyptian timezone and weather.
+                        A personalized dashboard including weather, news and
+                        exchange rate APIs; A to-do list and more. (Currently
+                        only supports Egyptian time/weather).
                       </p>
                     </div>
                   </FadeInView>
@@ -42,23 +41,26 @@ export default function ProjectsSection() {
                         </h4>
                         <ul className="space-y-3 text-base/7 text-gray-200">
                           <li>
-                            • <strong>API Integration: </strong> Multiple
-                            services that fetch and cache third-party data to
-                            populate widgets
+                            • <strong>API Integration: </strong>
+                            Service classes that fetch and cache third-party
+                            data to populate news, exchange rate and weather
+                            views
                           </li>
                           <li>
                             • <strong>User Authentication: </strong> Laravel
-                            Breeze scaffolding
+                            Breeze scaffolding, functioning reset password flow
+                            and middleware routes
                           </li>
                           <li>
-                            • <strong>CRUD Operations: </strong> CRUD handling
-                            for to-dos, bookmarks and calendar events for
-                            persistent to-dos/calender events and bookmarks
-                            across all devices
+                            • <strong>CRUD: </strong> Persistent user data
+                            across all devices for to-dos, bookmarks, and
+                            calendar events using Laravel&apos;s Eloquent ORM
+                            with MySQL
                           </li>
                           <li>
                             • <strong>Responsive Design: </strong>Adaptive
-                            layouts optimized for mobile and desktop
+                            layouts optimized for mobile, tablet and desktop
+                            screens
                           </li>
                         </ul>
                       </div>
@@ -95,7 +97,7 @@ export default function ProjectsSection() {
                         target="_blank"
                         className="flex-grow bg-blue-800/90 text-center font-bold text-sm py-3 hover:bg-blue-900/90 text-white rounded-lg transition-all duration-300"
                       >
-                        Launch Demo
+                        Launch App
                       </Link>
                       <Link
                         href="https://github.com/samir-magdy/personal-space-dashboard"
@@ -187,7 +189,7 @@ export default function ProjectsSection() {
                         target="_blank"
                         className="flex-grow bg-blue-800/90 text-center font-bold text-sm py-3 hover:bg-blue-900/90 text-white rounded-lg transition-all duration-300"
                       >
-                        Launch Demo
+                        Launch Game
                       </Link>
                       <Link
                         href="https://github.com/samir-magdy/js-reaction-game"
@@ -286,7 +288,7 @@ export default function ProjectsSection() {
                         target="_blank"
                         className="flex-grow bg-blue-800/90 text-center font-bold text-sm py-3 hover:bg-blue-900/90 text-white rounded-lg transition-all duration-300"
                       >
-                        Launch Demo
+                        Visit Website
                       </Link>
                       <Link
                         href="https://github.com/samir-magdy/personal-portfolio"
