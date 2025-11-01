@@ -239,8 +239,8 @@ export default function ProjectsSection() {
                           </li>
                           <li>
                             • <strong>Deferred Loading: </strong>
-                            logical content loading prioritization for 'faster'
-                            perceived performance
+                            logical content loading prioritization for
+                            &apos;faster&apos; perceived performance
                           </li>
                           <li>
                             • <strong>Device-Specific UX: </strong>Animation
