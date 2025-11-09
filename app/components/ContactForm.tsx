@@ -57,7 +57,7 @@ export default function ContactForm() {
   };
 
   return (
-    <form className="text-start pt-2" onSubmit={handleSubmit}>
+    <form className="text-start pt-2 relative" onSubmit={handleSubmit}>
       <div>
         <label
           htmlFor="name"
@@ -132,7 +132,7 @@ export default function ContactForm() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.5 }}
-            className="mt-5 w-full text-lg mx-auto py-4 rounded-lg border border-green-500/30 bg-green-800/80 backdrop-blur-sm px-2 md:px-8"
+            className="mt-5 md:absolute md:-bottom-20 md:left-0 md:right-0 md:mt-0 w-full text-lg mx-auto py-4 rounded-lg border border-green-500/30 bg-green-800/80 backdrop-blur-sm px-2 md:px-8"
           >
             <p className="flex gap-1 justify-center text-green-200 text-center font-medium md:font-bold">
               <svg
@@ -162,7 +162,7 @@ export default function ContactForm() {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -20 }}
           transition={{ duration: 0.5 }}
-          className="mt-5 mx-auto py-4 rounded-lg border border-red-500/30 bg-red-800/60 backdrop-blur-sm w-full px-1"
+          className="mt-5 md:absolute md:-bottom-20 md:left-0 md:right-0 md:mt-0 mx-auto py-4 rounded-lg border border-red-500/30 bg-red-800/60 backdrop-blur-sm w-full px-1"
         >
           <p className="text-red-200 text-center font-medium md:font-bold">
             {errorMessage}
