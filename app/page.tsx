@@ -34,8 +34,8 @@ export default function MinimalModernPortfolio() {
       {/* DarkVeil background covering entire site */}
       <div className="fixed inset-0 z-0">
         <DarkVeil
-          hueShift={350}
-          speed={0.3}
+          hueShift={10}
+          speed={0.5}
           warpAmount={1}
           resolutionScale={resolutionScale}
         />

@@ -3,12 +3,14 @@
 import FadeInView from "./FadeInView";
 
 const skills = [
-  "Laravel",
   "Next.js",
-  "TypeScript",
   "React.js",
-  "MySQL",
+  "Node.js",
+  "TypeScript",
+  "Laravel",
   "PHP",
+  "MongoDB",
+  "MySQL",
   "TailwindCSS",
   "Git/Github",
 ];
