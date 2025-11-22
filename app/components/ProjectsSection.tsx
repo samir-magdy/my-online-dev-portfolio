@@ -87,7 +87,7 @@ export default function ProjectsSection() {
                       <Link
                         href="https://yallashop-frontend.vercel.app/"
                         target="_blank"
-                        className="grow-[3.5] bg-blue-800/90 text-center font-bold text-sm py-3 hover:bg-blue-900/90 text-white rounded-lg transition-all duration-300"
+                        className="grow-[6] bg-blue-800/90 text-center font-bold text-sm py-3 hover:bg-blue-900/90 text-white rounded-lg transition-all duration-300"
                       >
                         Visit Website
                       </Link>
@@ -276,7 +276,7 @@ export default function ProjectsSection() {
                       <Link
                         href="https://samir-magdy.github.io/js-reaction-game/"
                         target="_blank"
-                        className="grow-[3.5] bg-blue-800/90 text-center font-bold text-sm py-3 hover:bg-blue-900/90 text-white rounded-lg transition-all duration-300"
+                        className="grow-[6] bg-blue-800/90 text-center font-bold text-sm py-3 hover:bg-blue-900/90 text-white rounded-lg transition-all duration-300"
                       >
                         Launch Game
                       </Link>
@@ -376,7 +376,7 @@ export default function ProjectsSection() {
                       <Link
                         href="https://samir-magdy.github.io/personal-portfolio/"
                         target="_blank"
-                        className="grow-[3.5] bg-blue-800/90 text-center font-bold text-sm py-3 hover:bg-blue-900/90 text-white rounded-lg transition-all duration-300"
+                        className="grow-[6] bg-blue-800/90 text-center font-bold text-sm py-3 hover:bg-blue-900/90 text-white rounded-lg transition-all duration-300"
                       >
                         Visit Website
                       </Link>
