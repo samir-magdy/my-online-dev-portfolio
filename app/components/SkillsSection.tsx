@@ -23,7 +23,10 @@ export default function SkillsSection() {
           <h2>Skills</h2>
         </FadeInView>
 
-        <FadeInView delay={0.2} className="grid grid-cols-2 gap-4 md:gap-6">
+        <FadeInView
+          delay={0.2}
+          className="grid grid-cols-2 gap-4 md:gap-6 max-w-4xl mx-auto"
+        >
           {skills.map((skill, index) => (
             <FadeInView key={skill} delay={0.1 * index}>
               <div className="bg-gray-900/80 rounded-lg p-4 md:p-6 text-center border border-gray-800">

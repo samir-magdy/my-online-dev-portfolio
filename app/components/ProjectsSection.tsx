@@ -11,7 +11,7 @@ export default function ProjectsSection() {
           <h2>Projects</h2>
         </FadeInView>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-12 md:gap-y-20">
+        <div className="grid grid-cols-1 gap-6 md:gap-12 md:gap-y-20 max-w-4xl mx-auto">
           {/* YallaShop */}
           <FadeInView delay={0.05}>
             <div className="bg-gray-900/80 rounded-xl overflow-hidden border border-gray-800 shadow-lg">
@@ -26,10 +26,12 @@ export default function ProjectsSection() {
                   <FadeInView delay={0.1}>
                     <div>
                       <p className="text-gray-200 text-base/7">
-                        YallaShop is a modern, mobile-first e-commerce web app
-                        featuring dynamic product browsing, advanced filtering,
-                        and user-friendly cart functionality for a pleasant
-                        shopping experience.
+                        YallaShop demonstrates a visually appealing and
+                        user-friendly UI/UX design. Product data is fetched from
+                        a static JSON file and all logic is handled on the
+                        client side. In a real-world application, this would
+                        typically involve server-side data fetching from a
+                        database for accuracy and security.
                       </p>
                     </div>
                   </FadeInView>
@@ -44,18 +46,17 @@ export default function ProjectsSection() {
                           <li>
                             • <strong>Advanced Filtering: </strong>
                             Users can browse and filter products by price,
-                            rating, categories, sort by name/price and more
+                            categories, sort by name/price and more
                           </li>
                           <li>
-                            • <strong>Shopping Cart: </strong> Users can easily
-                            add products to their shopping cart from multiple
-                            locations and manage their cart via an interactive
-                            sidebar
+                            • <strong>Shopping Cart: </strong> An interactive
+                            sidebadar cart with real-time updates and persistent
+                            user data using localStorage
                           </li>
                           <li>
                             • <strong>Product Suggestions: </strong> Each
-                            product page displays similar products based on the
-                            current product category for further discovery
+                            product page displays suggestions based on the
+                            current product category
                           </li>
                         </ul>
                       </div>
@@ -64,7 +65,7 @@ export default function ProjectsSection() {
 
                   {/* Technology Tags */}
                   <FadeInView delay={0.15}>
-                    <div className="flex flex-wrap gap-2 md:gap-4 mb-5">
+                    <div className="flex flex-wrap gap-2 md:gap-4 my-5">
                       <span className="text-sm px-2 py-0.5 bg-gray-800 text-white rounded-xl border border-gray-700 hover:border-blue-500/50 hover:bg-gray-700/70 hover:scale-110 hover:-translate-y-1 transition-all duration-300 cursor-default">
                         Next.js
                       </span>
@@ -86,14 +87,14 @@ export default function ProjectsSection() {
                       <Link
                         href="https://yallashop-frontend.vercel.app/"
                         target="_blank"
-                        className="flex-grow bg-blue-800/90 text-center font-bold text-sm py-3 hover:bg-blue-900/90 text-white rounded-lg transition-all duration-300"
+                        className="grow-[3.5] bg-blue-800/90 text-center font-bold text-sm py-3 hover:bg-blue-900/90 text-white rounded-lg transition-all duration-300"
                       >
                         Visit Website
                       </Link>
                       <Link
                         href="https://github.com/samir-magdy/yallashop-ecommerce-frontend"
                         target="_blank"
-                        className="text-sm font-bold md:px-12 px-3 py-3 bg-gray-100/90 hover:bg-gray-200/90 text-gray-900 rounded-lg transition-all duration-300 backdrop-blur-sm"
+                        className="text-center grow text-sm font-bold md:px-12 px-3 py-3 bg-gray-100/90 hover:bg-gray-200/90 text-gray-900 rounded-lg transition-all duration-300 backdrop-blur-sm"
                       >
                         View Code
                       </Link>
@@ -104,7 +105,7 @@ export default function ProjectsSection() {
             </div>
           </FadeInView>
 
-          {/* Personal Hub */}
+          {/* Personal Hub - COMMENTED OUT
           <FadeInView delay={0.05}>
             <div className="bg-gray-900/80 rounded-xl overflow-hidden border border-gray-800 shadow-lg">
               <div className="p-6">
@@ -155,7 +156,6 @@ export default function ProjectsSection() {
                     </div>
                   </FadeInView>
 
-                  {/* Technology Tags */}
                   <FadeInView delay={0.15}>
                     <div className="flex flex-wrap gap-2 md:gap-4 mb-5">
                       <span className="text-sm px-2 py-0.5 bg-gray-800 text-white rounded-xl border border-gray-700 hover:border-blue-500/50 hover:bg-gray-700/70 hover:scale-110 hover:-translate-y-1 transition-all duration-300 cursor-default">
@@ -177,7 +177,6 @@ export default function ProjectsSection() {
                     </div>
                   </FadeInView>
 
-                  {/* Project Links */}
                   <FadeInView delay={0.175}>
                     <div className="flex gap-3">
                       <Link
@@ -200,6 +199,7 @@ export default function ProjectsSection() {
               </div>
             </div>
           </FadeInView>
+        */}
 
           {/* Space Reflex */}
           <FadeInView delay={0.05}>
@@ -217,7 +217,8 @@ export default function ProjectsSection() {
                       <p className="text-gray-200 text-base/7">
                         A client-side, browser-based reaction game where players
                         must click/tap precisely when a cycling button color
-                        matches a displayed color.
+                        matches a displayed color. Players have 3 tries to reach
+                        and beat the final round.
                       </p>
                     </div>
                   </FadeInView>
@@ -241,8 +242,8 @@ export default function ProjectsSection() {
                           </li>
                           <li>
                             • <strong>Game Progression: </strong>
-                            Speed intervals decrease from 600ms to 300ms across
-                            rounds, three lives total
+                            Speed intervals decrease throughout rounds,
+                            increasing difficulty as players advance
                           </li>
                           <li>
                             • <strong>Restart System: </strong>
@@ -275,14 +276,14 @@ export default function ProjectsSection() {
                       <Link
                         href="https://samir-magdy.github.io/js-reaction-game/"
                         target="_blank"
-                        className="flex-grow bg-blue-800/90 text-center font-bold text-sm py-3 hover:bg-blue-900/90 text-white rounded-lg transition-all duration-300"
+                        className="grow-[3.5] bg-blue-800/90 text-center font-bold text-sm py-3 hover:bg-blue-900/90 text-white rounded-lg transition-all duration-300"
                       >
                         Launch Game
                       </Link>
                       <Link
                         href="https://github.com/samir-magdy/js-reaction-game"
                         target="_blank"
-                        className="text-sm font-bold md:px-12 px-3 py-3 bg-gray-100/90 hover:bg-gray-200/90 text-gray-900 rounded-lg transition-all duration-300 backdrop-blur-sm"
+                        className="text-center grow text-sm font-bold md:px-12 px-3 py-3 bg-gray-100/90 hover:bg-gray-200/90 text-gray-900 rounded-lg transition-all duration-300 backdrop-blur-sm"
                       >
                         View Code
                       </Link>
@@ -295,7 +296,7 @@ export default function ProjectsSection() {
 
           {/* Photographer Portfolio */}
           <FadeInView delay={0.05}>
-            <div className="bg-gray-900/80 rounded-xl overflow-hidden border border-gray-800 shadow-lg lg:max-w-2xl lg:mx-auto">
+            <div className="bg-gray-900/80 rounded-xl overflow-hidden border border-gray-800 shadow-lg">
               <div className="p-6">
                 <FadeInView delay={0.075}>
                   <h3 className="text-xl md:text-2xl font-bold mb-4 text-white">
@@ -307,9 +308,9 @@ export default function ProjectsSection() {
                   <FadeInView delay={0.1}>
                     <div>
                       <p className="text-gray-200 text-base/7">
-                        A mobile-optimized photographer portfolio website.
-                        Features a filterable gallery with around 40 high
-                        resolution images.
+                        A mobile-optimized photographer&apos;s portfolio
+                        website. Features a filterable gallery with around 40
+                        high resolution images stored on the server
                       </p>
                     </div>
                   </FadeInView>
@@ -329,8 +330,9 @@ export default function ProjectsSection() {
                           </li>
                           <li>
                             • <strong>Deferred Loading: </strong>
-                            logical content loading prioritization for
-                            &apos;faster&apos; perceived performance
+                            logical loading prioritization for different images
+                            resulting in &apos;faster&apos; perceived
+                            performance
                           </li>
                           <li>
                             • <strong>Device-Specific UX: </strong>Animation
@@ -338,9 +340,9 @@ export default function ProjectsSection() {
                             disabled on mobile
                           </li>
                           <li>
-                            • <strong>Responsive Design: </strong>Adaptive
-                            layouts across all screen sizes using CSS media
-                            queries with conditional hero section display
+                            • <strong>Responsive Design: </strong>
+                            use of CSS media queries and conditional hero
+                            section display for desktop/mobile
                           </li>
                         </ul>
                       </div>
@@ -374,14 +376,14 @@ export default function ProjectsSection() {
                       <Link
                         href="https://samir-magdy.github.io/personal-portfolio/"
                         target="_blank"
-                        className="flex-grow bg-blue-800/90 text-center font-bold text-sm py-3 hover:bg-blue-900/90 text-white rounded-lg transition-all duration-300"
+                        className="grow-[3.5] bg-blue-800/90 text-center font-bold text-sm py-3 hover:bg-blue-900/90 text-white rounded-lg transition-all duration-300"
                       >
                         Visit Website
                       </Link>
                       <Link
                         href="https://github.com/samir-magdy/personal-portfolio"
                         target="_blank"
-                        className="text-sm font-bold md:px-12 px-3 py-3 bg-gray-100/90 hover:bg-gray-200/90 text-gray-900 rounded-lg transition-all duration-300 backdrop-blur-sm"
+                        className="text-center grow text-sm font-bold md:px-12 px-3 py-3 bg-gray-100/90 hover:bg-gray-200/90 text-gray-900 rounded-lg transition-all duration-300 backdrop-blur-sm"
                       >
                         View Code
                       </Link>

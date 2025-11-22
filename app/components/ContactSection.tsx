@@ -6,7 +6,7 @@ import ContactForm from "./ContactForm";
 export default function ContactSection() {
   return (
     <section id="contact" className="py-8 pb-4 md:py-32 md:pb-8">
-      <div className="max-w-6xl mx-auto px-4">
+      <div className="max-w-5xl mx-auto ">
         {/* Mobile Heading - Shows only on mobile before form */}
         <div className="md:hidden mb-4">
           <div className="mt-20 text-3xl md:text-4xl font-bold text-white text-center">
