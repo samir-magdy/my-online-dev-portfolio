@@ -41,26 +41,6 @@ export default function ContactSection() {
             <FadeInView delay={0.3}>
               <div className="flex flex-col space-y-4 md:mb-3">
                 <a
-                  href="mailto:samir.magdy.dev@protonmail.com"
-                  className="hidden md:flex text-gray-300 hover:text-gray-100 transition-colors text-md md:text-lg flex items-center gap-2 justify-center md:justify-start"
-                >
-                  <svg
-                    className="w-5 h-5"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"
-                    />
-                  </svg>
-                  samir.magdy.dev@protonmail.com
-                </a>
-                <a
                   href="https://www.linkedin.com/in/samirmagdy93"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -118,7 +98,7 @@ export default function ContactSection() {
                   href="/SamirMagdy.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="items-center py-4 px-4 flex border border-gray-500/90  text-lg text-bold rounded-lg hover:bg-gray-300/90 hover:text-black transition-colors cursor-pointer justify-center w-full"
+                  className="py-4 px-4 flex border border-gray-500/90  text-lg text-bold rounded-lg hover:bg-gray-300/90 hover:text-black transition-colors cursor-pointer justify-center w-full"
                 >
                   <span className="font-bold">Preview CV</span>
                 </a>

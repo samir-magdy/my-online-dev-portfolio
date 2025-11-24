@@ -10,10 +10,10 @@ const geistSans = Geist({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://samirmagdy.com"),
-  title: "Samir Magdy | Web Developer",
+  title: "Samir | Web Developer",
   icons: "icon.png",
   description:
-    "Passionate web developer with a focus on clean, minimal, and effective digital solutions.",
+    "Full-stack web developer specializing in Next.js and Laravel. View my portfolio and projects.",
   keywords: [
     "Software Developer",
     "Minimal Design",
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Samir Magdy | Web Developer Portfolio",
     description:
-      "Passionate web developer creating clean, minimal, and effective digital solutions.",
+      "Full-stack web developer specializing in Next.js and Laravel. View my portfolio and projects.",
     url: "https://samirmagdy.com",
     siteName: "Samir Magdy | Portfolio",
     images: [
@@ -50,14 +50,6 @@ export const metadata: Metadata = {
     ],
     locale: "en_US",
     type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Samir Magdy | Web Developer",
-    description:
-      "Passionate web developer creating clean, minimal, and effective digital solutions.",
-    creator: "@samirm_93",
-    images: ["/gg.png"],
   },
   robots: {
     index: true,
