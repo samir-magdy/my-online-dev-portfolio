@@ -17,9 +17,9 @@ const skills = [
 
 export default function SkillsSection() {
   return (
-    <section id="skills" className="md:py-40 md:pt-44 px-4">
+    <section id="skills" className="pt-24 pb-40 md:py-40 md:pt-44 px-4">
       <div className="max-w-7xl mx-auto">
-        <FadeInView className="mt-14 md:mt-0 text-3xl md:text-4xl font-bold mb-6 md:mb-16 text-center text-white">
+        <FadeInView className="text-3xl md:text-4xl font-bold mb-6 md:mb-16 text-center text-white">
           <h2>Skills</h2>
         </FadeInView>
 

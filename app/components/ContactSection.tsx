@@ -5,11 +5,11 @@ import ContactForm from "./ContactForm";
 // fix get in touch title responsive, spacing in new contact section and vertical margins
 export default function ContactSection() {
   return (
-    <section id="contact" className="pt-1 md:py-32 md:pb-8">
+    <section id="contact" className="pt-24 md:py-32 md:pb-8">
       <div className="max-w-4xl mx-auto px-4">
         {/* Mobile Heading - Shows only on mobile before form */}
         <div className="md:hidden mb-4">
-          <div className="mt-20 text-3xl md:text-4xl font-bold text-white text-center">
+          <div className="text-3xl md:text-4xl font-bold text-white text-center">
             <h2>Get In Touch</h2>
           </div>
           <div className="text-center text-gray-100 text-xl line-8 my-4 mt-4 text-medium">
