@@ -25,7 +25,15 @@ export default function HeroSection() {
     setIsMenuOpen(false);
     const element = document.querySelector(targetId);
     if (element) {
-      element.scrollIntoView({ behavior: "smooth", block: "start" });
+      console.log(element);
+      // const navbarHeight = 50; // Adjust this value based on your navbar height
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.scrollY;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
     }
   };
 

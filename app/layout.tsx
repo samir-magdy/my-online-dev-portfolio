@@ -10,42 +10,30 @@ const geistSans = Geist({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://samirmagdy.com"),
-  title: "Samir | Web Developer",
-  icons: "icon.png",
+  title: "Samir Magdy | Full-Stack Developer",
+  icons: {
+    icon: "/developer-favicon.png",
+    shortcut: "/developer-favicon.png",
+    apple: "/developer-favicon.png",
+  },
   description:
-    "Full-stack web developer specializing in Next.js and Laravel. View my portfolio and projects.",
-  keywords: [
-    "Software Developer",
-    "Minimal Design",
-    "Laravel",
-    "PHP",
-    "Modern Development",
-    "Web Development",
-    "User Experience",
-    "Design Systems",
-    "JavaScript",
-    "TypeScript",
-    "React",
-    "Next.js",
-    "Performance",
-    "Accessibility",
-    "Minimalist Portfolio",
-    "Samir Magdy",
-  ],
-  authors: [{ name: "Samir Magdy" }],
-  creator: "Samir Magdy",
+    "I'm a full-stack developer specializing in the Next.js framework. Here, you can view my projects, contact info, and more.",
+  authors: { name: "Samir Magdy" },
+  alternates: {
+    canonical: "https://samirmagdy.com",
+  },
   openGraph: {
-    title: "Samir Magdy | Web Developer Portfolio",
+    title: "Samir Magdy | Full-Stack Developer",
     description:
-      "Full-stack web developer specializing in Next.js and Laravel. View my portfolio and projects.",
+      "I'm a full-stack developer specializing in the Next.js framework. Here, you can view my projects, contact info, and more.",
     url: "https://samirmagdy.com",
-    siteName: "Samir Magdy | Portfolio",
+    siteName: "Samir Magdy Portfolio",
     images: [
       {
-        url: "/gg.png",
+        url: "/og.jpg",
         width: 1200,
         height: 630,
-        alt: "Samir Magdy | Modern Portfolio",
+        alt: "Samir Magdy | Developer Portfolio",
       },
     ],
     locale: "en_US",
@@ -72,7 +60,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} antialiased`}>
-        <div>{children}</div>
+        <main>{children}</main>
         <Analytics />
       </body>
     </html>

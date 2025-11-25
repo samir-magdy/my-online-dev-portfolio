@@ -5,16 +5,16 @@ import Link from "next/link";
 
 export default function ProjectsSection() {
   return (
-    <section id="portfolio" className="py-20 md:py-32 px-4 ">
+    <section id="portfolio" className="pt-20 pb-32 md:pb-28 md:pt-24 px-4">
       <div className="max-w-7xl mx-auto">
-        <FadeInView className="text-3xl md:text-4xl font-bold mb-4 md:mb-16 text-center text-white">
+        <FadeInView className="text-3xl md:text-4xl font-bold mb-6 md:mb-10 text-center text-white">
           <h2>Projects</h2>
         </FadeInView>
 
         <div className="grid grid-cols-1 gap-6 md:gap-12 md:gap-y-20 max-w-4xl mx-auto">
           {/* YallaShop */}
           <FadeInView delay={0.05}>
-            <div className="bg-gray-900/80 rounded-xl overflow-hidden border border-gray-800 shadow-lg">
+            <article className="bg-gray-900/80 rounded-xl overflow-hidden border border-gray-800 shadow-lg">
               <div className="p-6">
                 <FadeInView delay={0.075}>
                   <h3 className="text-xl md:text-2xl font-bold mb-4 text-white">
@@ -102,7 +102,7 @@ export default function ProjectsSection() {
                   </FadeInView>
                 </div>
               </div>
-            </div>
+            </article>
           </FadeInView>
 
           {/* Personal Hub - COMMENTED OUT
@@ -203,7 +203,7 @@ export default function ProjectsSection() {
 
           {/* Space Reflex */}
           <FadeInView delay={0.05}>
-            <div className="bg-gray-900/80 rounded-xl overflow-hidden border border-gray-800 shadow-lg">
+            <article className="bg-gray-900/80 rounded-xl overflow-hidden border border-gray-800 shadow-lg">
               <div className="p-6">
                 <FadeInView delay={0.075}>
                   <h3 className="text-xl md:text-2xl font-bold mb-4 text-white">
@@ -291,12 +291,12 @@ export default function ProjectsSection() {
                   </FadeInView>
                 </div>
               </div>
-            </div>
+            </article>
           </FadeInView>
 
           {/* Photographer Portfolio */}
           <FadeInView delay={0.05}>
-            <div className="bg-gray-900/80 rounded-xl overflow-hidden border border-gray-800 shadow-lg">
+            <article className="bg-gray-900/80 rounded-xl overflow-hidden border border-gray-800 shadow-lg">
               <div className="p-6">
                 <FadeInView delay={0.075}>
                   <h3 className="text-xl md:text-2xl font-bold mb-4 text-white">
@@ -308,7 +308,7 @@ export default function ProjectsSection() {
                   <FadeInView delay={0.1}>
                     <div>
                       <p className="text-gray-200 text-base/7">
-                        A mobile-optimized photographer&apos;s portfolio
+                        A mobile-optimized, photographer&apos;s portfolio
                         website. Features a filterable gallery with around 40
                         high resolution images stored on the server
                       </p>
@@ -325,8 +325,7 @@ export default function ProjectsSection() {
                           <li>
                             • <strong>Photo-Gallery: </strong> Instant category
                             filtering using JavaScript with CSS visibility
-                            classes instead of having to re-render images on
-                            each filter
+                            classes
                           </li>
                           <li>
                             • <strong>Deferred Loading: </strong>
@@ -391,7 +390,7 @@ export default function ProjectsSection() {
                   </FadeInView>
                 </div>
               </div>
-            </div>
+            </article>
           </FadeInView>
         </div>
       </div>
