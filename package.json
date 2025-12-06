@@ -1,5 +1,5 @@
 {
-  "name": "Samir Magdy",
+  "name": "samir-magdy-portfolio",
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
@@ -13,18 +13,18 @@
     "@vercel/analytics": "^1.4.1",
     "framer-motion": "^12.0.6",
     "motion": "^12.23.24",
-    "next": "^15.4.5",
+    "next": "^16.0.7",
     "ogl": "^1.0.11",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
+    "react": "^19.2.1",
+    "react-dom": "^19.2.1",
     "resend": "^4.1.1",
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
+    "@types/react": "^19.2.7",
+    "@types/react-dom": "^19.2.3",
     "eslint": "^9",
     "eslint-config-next": "15.1.6",
     "postcss": "^8",
