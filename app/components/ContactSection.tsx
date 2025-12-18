@@ -111,7 +111,7 @@ export default function ContactSection() {
         <footer>
           <FadeInView
             delay={0.5}
-            className="text-gray-300 text-sm md:text-lg md:mt-48 text-center"
+            className="text-gray-300 text-sm md:text-lg md:mt-24 text-center"
           >
             <div className="flex justify-center md:hidden gap-5 mt-4">
               <a href="https://github.com/samir-magdy">

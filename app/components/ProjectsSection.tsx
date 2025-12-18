@@ -5,14 +5,14 @@ import Link from "next/link";
 
 export default function ProjectsSection() {
   return (
-    <section id="portfolio" className="pt-24 pb-32 md:pb-28 md:pt-24 px-4">
+    <section id="portfolio" className="pt-24 pb-32 md:pb-28 md:pt-20 px-4">
       <div className="max-w-7xl mx-auto">
-        <FadeInView className="text-3xl md:text-4xl font-bold mb-6 md:mb-10 text-center text-white">
+        <FadeInView className="text-3xl md:text-4xl font-bold mb-6 md:mb-5 text-center text-white">
           <h2>Projects</h2>
         </FadeInView>
 
-        <div className="grid grid-cols-1 gap-6 md:gap-12 md:gap-y-20 max-w-4xl mx-auto">
-          {/* YallaShop */}
+        <div className="grid grid-cols-1 gap-6 md:gap-12 md:gap-y-20  mx-auto">
+          {/* YallaShop - COMMENTED OUT
           <FadeInView delay={0.05}>
             <article className="bg-gray-900/80 rounded-xl overflow-hidden border border-gray-800 shadow-lg">
               <div className="p-6">
@@ -26,12 +26,21 @@ export default function ProjectsSection() {
                   <FadeInView delay={0.1}>
                     <div>
                       <p className="text-gray-200 text-base/7">
-                        YallaShop demonstrates a visually appealing and
-                        user-friendly UI/UX design. Product data is fetched from
-                        a static JSON file and all logic is handled on the
-                        client side. In a real-world application, this would
-                        typically involve server-side data fetching from a
-                        database for accuracy and security.
+                        A frontend e-commerce prototype demonstrating modern
+                        React and Next.js capabilities. Built with TypeScript
+                        and Tailwind CSS, it features advanced product
+                        filtering, persistent cart management, and mobile-first
+                        responsive design patterns. Deployed on Vercel.
+                        <p className="mt-1">
+                          <strong>
+                            <i>Note: </i>
+                          </strong>
+                          <i>
+                            This project uses static JSON for product data, in a
+                            real-world application, this would typically involve
+                            server-side data fetching from a database.
+                          </i>
+                        </p>
                       </p>
                     </div>
                   </FadeInView>
@@ -44,26 +53,39 @@ export default function ProjectsSection() {
                         </h4>
                         <ul className="space-y-3 text-base/7 text-gray-200">
                           <li>
-                            • <strong>Advanced Filtering: </strong>
-                            Users can browse and filter products by price,
-                            categories, sort by name/price and more
+                            • <strong>Product Filtering & Search: </strong>
+                            Search across multiple fields, and sort by various
+                            criteria. Search queries and categories persist in
+                            the URL for shareable results. Mobile uses a
+                            slide-in modal interface with apply/reset buttons
+                            and removable filter pills, while desktop provides
+                            instant filtering through integrated dropdowns.
                           </li>
                           <li>
-                            • <strong>Shopping Cart: </strong> An interactive
-                            sidebadar cart with real-time updates and persistent
-                            user data using localStorage
+                            • <strong>Shopping Cart Management: </strong>
+                            Cart state is managed through React Context and
+                            automatically saved to localStorage. The add-to-cart
+                            button changes based on context—showing "Add to
+                            Cart", "View in Cart", or a confirmation checkmark.
+                            The cart sidebar displays real-time quantity
+                            controls, item removal, and a running subtotal.
                           </li>
+
                           <li>
-                            • <strong>Product Suggestions: </strong> Each
-                            product page displays suggestions based on the
-                            current product category
+                            • <strong>Responsive Design: </strong>
+                            The interface adapts meaningfully between devices,
+                            not just in layout but in interaction patterns.
+                            Mobile prioritizes a focused, modal-based filtering
+                            experience with explicit apply/reset actions, while
+                            desktop offers immediate filtering for faster
+                            browsing. Both approaches feel native to their
+                            respective platforms.
                           </li>
                         </ul>
                       </div>
                     </div>
                   </FadeInView>
 
-                  {/* Technology Tags */}
                   <FadeInView delay={0.15}>
                     <div className="flex flex-wrap gap-2 md:gap-4 my-5">
                       <span className="text-sm px-2 py-0.5 bg-gray-800 text-white rounded-xl border border-gray-700 hover:border-blue-500/50 hover:bg-gray-700/70 hover:scale-110 hover:-translate-y-1 transition-all duration-300 cursor-default">
@@ -81,7 +103,6 @@ export default function ProjectsSection() {
                     </div>
                   </FadeInView>
 
-                  {/* Project Links */}
                   <FadeInView delay={0.175}>
                     <div className="flex gap-3">
                       <Link
@@ -104,6 +125,7 @@ export default function ProjectsSection() {
               </div>
             </article>
           </FadeInView>
+        */}
 
           {/* Personal Hub - COMMENTED OUT
           <FadeInView delay={0.05}>
@@ -207,7 +229,7 @@ export default function ProjectsSection() {
               <div className="p-6">
                 <FadeInView delay={0.075}>
                   <h3 className="text-xl md:text-2xl font-bold mb-4 text-white">
-                    Space Reflex Game (Front-End)
+                    Space Reflex Game (Full-Stack)
                   </h3>
                 </FadeInView>
 
@@ -215,10 +237,20 @@ export default function ProjectsSection() {
                   <FadeInView delay={0.1}>
                     <div>
                       <p className="text-gray-200 text-base/7">
-                        A client-side, browser-based reaction game where players
-                        must click/tap precisely when a cycling button color
-                        matches a displayed color. Players have 3 tries to reach
-                        and beat the final round.
+                        A browser game built using vanilla JavaScript (zero
+                        frameworks). It is deployed on Render.com with separated
+                        SQLite database hosting (Turso Cloud) to maintain
+                        persistent data across server redeployments/shutdowns.
+                      </p>
+                      <p className="mt-1">
+                        <strong>
+                          <i>Note: </i>
+                        </strong>
+                        <i>
+                          Due to Render&apos;s free hosting limitations, the
+                          server may take around 50 seconds to initialize from
+                          an idle state.
+                        </i>
                       </p>
                     </div>
                   </FadeInView>
@@ -227,28 +259,41 @@ export default function ProjectsSection() {
                     <div className="grid grid-cols-1">
                       <div>
                         <h4 className="text-lg font-semibold text-blue-400 mb-4">
-                          Key Features:
+                          Technical Highlights:
                         </h4>
                         <ul className="space-y-3 text-base/7 text-gray-200">
                           <li>
-                            • <strong>Audio System: </strong> Multi-track sound
-                            management with volume controls, and event-triggered
-                            SFX
+                            • <strong>HTTP Server: </strong>
+                            Node.js server built from scratch using the http
+                            module that handles manual route parsing,
+                            server-side validation, and request body handling.
+                            Implements three RESTful endpoints, managing
+                            GET/POST requests with proper status codes, headers,
+                            and error handling.
                           </li>
                           <li>
-                            • <strong>DOM Manipulation: </strong>
-                            Real-time UI synchronization with conditional
-                            visibility based on event-driven game states
+                            • <strong>Dynamic UI Management: </strong>
+                            Event-driven DOM manipulation controlling element
+                            visibility and keyframe animations based on game
+                            state, with real-time updates via fetch API to
+                            populate the leaderboard without page refresh.
                           </li>
                           <li>
-                            • <strong>Game Progression: </strong>
-                            Speed intervals decrease throughout rounds,
-                            increasing difficulty as players advance
+                            • <strong>Database Operations: </strong>Executes
+                            conditional SQL queries that check existing records
+                            before INSERT/UPDATE operations. Only persists new
+                            high scores when players beat their previous times,
+                            preventing duplicate usernames via a dedicated
+                            name-check endpoint.
                           </li>
                           <li>
-                            • <strong>Restart System: </strong>
-                            Mid-game reset capability maintaining UI state while
-                            clearing progress
+                            • <strong>Session Management: </strong> Implements
+                            username persistence and first-visit tracking using
+                            browser localStorage instead of traditional
+                            authentication. Conditionally displays instruction
+                            modal for new users while maintaining identity
+                            across browser sessions, with name-change
+                            functionality that replaces stored credentials.
                           </li>
                         </ul>
                       </div>
@@ -259,13 +304,19 @@ export default function ProjectsSection() {
                   <FadeInView delay={0.15}>
                     <div className="flex flex-wrap gap-2 md:gap-4 mb-5">
                       <span className="text-sm px-2 py-0.5 bg-gray-800 text-white rounded-xl border border-gray-700 hover:border-blue-500/50 hover:bg-gray-700/70 hover:scale-110 hover:-translate-y-1 transition-all duration-300 cursor-default">
-                        HTML5
+                        Node.js
+                      </span>
+                      <span className="text-sm px-2 py-0.5 bg-gray-800 text-white rounded-xl border border-gray-700 hover:border-blue-500/50 hover:bg-gray-700/70 hover:scale-110 hover:-translate-y-1 transition-all duration-300 cursor-default">
+                        Vanilla JS
+                      </span>
+                      <span className="text-sm px-2 py-0.5 bg-gray-800 text-white rounded-xl border border-gray-700 hover:border-blue-500/50 hover:bg-gray-700/70 hover:scale-110 hover:-translate-y-1 transition-all duration-300 cursor-default">
+                        SQLite
                       </span>
                       <span className="text-sm px-2 py-0.5 bg-gray-800 text-white rounded-xl border border-gray-700 hover:border-blue-500/50 hover:bg-gray-700/70 hover:scale-110 hover:-translate-y-1 transition-all duration-300 cursor-default">
                         CSS3
                       </span>
                       <span className="text-sm px-2 py-0.5 bg-gray-800 text-white rounded-xl border border-gray-700 hover:border-blue-500/50 hover:bg-gray-700/70 hover:scale-110 hover:-translate-y-1 transition-all duration-300 cursor-default">
-                        Vanilla JS
+                        HTML5
                       </span>
                     </div>
                   </FadeInView>
@@ -274,7 +325,7 @@ export default function ProjectsSection() {
                   <FadeInView delay={0.175}>
                     <div className="flex gap-3">
                       <Link
-                        href="https://samir-magdy.github.io/js-reaction-game/"
+                        href="https://space-reflex-game.onrender.com/"
                         target="_blank"
                         className="grow-[6] bg-blue-800/90 text-center font-bold text-sm py-3 hover:bg-blue-900/90 text-white rounded-lg transition-all duration-300"
                       >
@@ -294,7 +345,7 @@ export default function ProjectsSection() {
             </article>
           </FadeInView>
 
-          {/* Photographer Portfolio */}
+          {/* Photographer Portfolio - COMMENTED OUT
           <FadeInView delay={0.05}>
             <article className="bg-gray-900/80 rounded-xl overflow-hidden border border-gray-800 shadow-lg">
               <div className="p-6">
@@ -309,8 +360,9 @@ export default function ProjectsSection() {
                     <div>
                       <p className="text-gray-200 text-base/7">
                         A mobile-optimized, photographer&apos;s portfolio
-                        website. Features a filterable gallery with around 40
-                        high resolution images stored on the server
+                        landing page. Features a filterable gallery with around
+                        40 high resolution images stored on the server. Hosted
+                        on GitHub pages.
                       </p>
                     </div>
                   </FadeInView>
@@ -348,7 +400,6 @@ export default function ProjectsSection() {
                     </div>
                   </FadeInView>
 
-                  {/* Technology Tags */}
                   <FadeInView delay={0.15}>
                     <div className="flex flex-wrap gap-2 md:gap-4 mb-5">
                       <span className="text-sm px-2 py-0.5 bg-gray-800 text-white rounded-xl border border-gray-700 hover:border-blue-500/50 hover:bg-gray-700/70 hover:scale-110 hover:-translate-y-1 transition-all duration-300 cursor-default">
@@ -369,7 +420,6 @@ export default function ProjectsSection() {
                     </div>
                   </FadeInView>
 
-                  {/* Project Links */}
                   <FadeInView delay={0.175}>
                     <div className="flex gap-3">
                       <Link
@@ -392,6 +442,7 @@ export default function ProjectsSection() {
               </div>
             </article>
           </FadeInView>
+        */}
         </div>
       </div>
     </section>
