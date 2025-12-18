@@ -5,8 +5,8 @@ import Link from "next/link";
 
 export default function ProjectsSection() {
   return (
-    <section id="portfolio" className="pt-24 pb-32 md:pb-28 md:pt-20 px-4">
-      <div className="max-w-7xl mx-auto">
+    <section id="portfolio" className="pt-20 pb-32 md:pt-24 md:pb-40 px-4">
+      <div className="max-w-4xl mx-auto">
         <FadeInView className="text-3xl md:text-4xl font-bold mb-6 md:mb-8 text-center text-white">
           <h2>Projects</h2>
         </FadeInView>
@@ -225,7 +225,7 @@ export default function ProjectsSection() {
 
           {/* Space Reflex */}
           <FadeInView delay={0.05}>
-            <article className="bg-gray-900/80 rounded-xl overflow-hidden border border-gray-800 shadow-lg">
+            <article className="bg-gray-900/95 rounded-xl overflow-hidden border border-gray-800 shadow-lg">
               <div className="p-6">
                 <FadeInView delay={0.075}>
                   <h3 className="text-xl md:text-2xl font-bold mb-4 text-white">
@@ -237,10 +237,10 @@ export default function ProjectsSection() {
                   <FadeInView delay={0.1}>
                     <div>
                       <p className="text-gray-200 text-base/7">
-                        A browser game built using vanilla JavaScript (zero
-                        frameworks). It is deployed on Render.com with separated
-                        SQLite database hosting (Turso Cloud) to maintain
-                        persistent data across server redeployments/shutdowns.
+                        A browser game built using vanilla JS (no frameworks).
+                        It is deployed on Render.com with separated SQLite
+                        database hosting (Turso Cloud) to maintain persistent
+                        data across server redeployments/shutdowns.
                       </p>
                       <p className="mt-1">
                         <strong>
@@ -332,7 +332,7 @@ export default function ProjectsSection() {
                         Launch Game
                       </Link>
                       <Link
-                        href="https://github.com/samir-magdy/js-reaction-game"
+                        href="https://github.com/samir-magdy/space-reflex-game"
                         target="_blank"
                         className="text-center grow text-sm font-bold md:px-12 px-3 py-3 bg-gray-100/90 hover:bg-gray-200/90 text-gray-900 rounded-lg transition-all duration-300 backdrop-blur-sm"
                       >

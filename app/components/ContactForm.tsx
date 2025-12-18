@@ -70,7 +70,7 @@ export default function ContactForm() {
           id="name"
           required
           placeholder="Your name"
-          className="mb-4 text-xl w-full h-14 px-4 rounded-lg border border-gray-700 bg-gray-900/70 text-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors"
+          className="mb-4 text-xl w-full h-14 px-4 rounded-lg border border-gray-700 bg-gray-900/95 text-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors"
           value={formData.name}
           onChange={(e) =>
             setFormData((prev) => ({ ...prev, name: e.target.value }))
@@ -90,7 +90,7 @@ export default function ContactForm() {
           id="email"
           required
           placeholder="Your email"
-          className="mb-4 text-xl w-full h-14 px-4 rounded-lg border border-gray-700 bg-gray-900/70 text-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors"
+          className="mb-4 text-xl w-full h-14 px-4 rounded-lg border border-gray-700 bg-gray-900/95 text-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors"
           value={formData.email}
           onChange={(e) =>
             setFormData((prev) => ({ ...prev, email: e.target.value }))
@@ -110,7 +110,7 @@ export default function ContactForm() {
           required
           rows={4}
           placeholder="Describe your project or inquiry..."
-          className="mb-4 text-xl w-full px-4 py-2 rounded-lg border border-gray-700 bg-gray-900/70 text-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors"
+          className="mb-4 text-xl w-full px-4 py-2 rounded-lg border border-gray-700 bg-gray-900/95 text-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors"
           value={formData.message}
           onChange={(e) =>
             setFormData((prev) => ({ ...prev, message: e.target.value }))
@@ -122,7 +122,7 @@ export default function ContactForm() {
         disabled={status === "loading"}
         className="w-full mx-auto block bg-blue-800 font-bold text-lg py-4 hover:bg-blue-900/90 text-white rounded-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
       >
-        {status === "loading" ? "Sending..." : "Submit"}
+        {status === "loading" ? "Sending..." : "Submit Form"}
       </button>
 
       <AnimatePresence>

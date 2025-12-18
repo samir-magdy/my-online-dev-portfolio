@@ -43,7 +43,7 @@ export default function HeroSection() {
           hidden md:block
           fixed top-0 left-0 right-0 z-50
           transition-all duration-300 py-3 px-10
-          ${isScrolled ? "bg-gray-900" : "bg-gray-900/20"}
+          bg-gray-900/80 backdrop-blur-md
            `}
       >
         <div className="flex justify-between items-center max-w-7xl mx-auto">

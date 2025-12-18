@@ -1,46 +1,31 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import HeroSection from "./components/HeroSection";
 import ProjectsSection from "./components/ProjectsSection";
 import SkillsSection from "./components/SkillsSection";
 import ContactSection from "./components/ContactSection";
-import DarkVeil from "./components/DarkVeil";
+import Waves from "./components/Waves";
 
 export default function MinimalModernPortfolio() {
-  const [resolutionScale, setResolutionScale] = useState(1.8);
-
-  useEffect(() => {
-    const updateResolution = () => {
-      const width = window.innerWidth;
-
-      // Mobile: < 768px
-      if (width < 768) {
-        setResolutionScale(1.4); //
-      }
-      // Desktop: >= 1024px
-      else {
-        setResolutionScale(1.8);
-      }
-    };
-
-    updateResolution();
-    window.addEventListener("resize", updateResolution);
-    return () => window.removeEventListener("resize", updateResolution);
-  }, []);
-
   return (
     <div className="relative min-h-screen bg-black text-white">
-      {/* DarkVeil background covering entire site */}
+      {/* Waves background covering entire site */}
       <div className="fixed inset-0 z-0">
-        <DarkVeil
-          hueShift={10}
-          speed={0.5}
-          warpAmount={1}
-          resolutionScale={resolutionScale}
+        <Waves
+          lineColor="#171b40c4"
+          backgroundColor="rgba(16, 15, 15, 1)"
+          waveSpeedX={0}
+          waveSpeedY={0}
+          waveAmpX={20}
+          waveAmpY={10}
+          friction={0.9}
+          tension={0.01}
+          maxCursorMove={120}
+          xGap={10}
+          // yGap={200}
         />
       </div>
-      {/* Content on top of DarkVeil */}
+      {/* Content on top of Waves */}
       <div className="relative z-10">
         <HeroSection />
         <ProjectsSection />
