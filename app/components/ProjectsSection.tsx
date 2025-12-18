@@ -7,7 +7,7 @@ export default function ProjectsSection() {
   return (
     <section id="portfolio" className="pt-24 pb-32 md:pb-28 md:pt-20 px-4">
       <div className="max-w-7xl mx-auto">
-        <FadeInView className="text-3xl md:text-4xl font-bold mb-6 md:mb-5 text-center text-white">
+        <FadeInView className="text-3xl md:text-4xl font-bold mb-6 md:mb-8 text-center text-white">
           <h2>Projects</h2>
         </FadeInView>
 
