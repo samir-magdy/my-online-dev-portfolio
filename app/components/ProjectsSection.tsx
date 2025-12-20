@@ -11,8 +11,7 @@ export default function ProjectsSection() {
           <h2>Projects</h2>
         </FadeInView>
 
-        <div className="grid grid-cols-1 gap-6 md:gap-12 md:gap-y-20  mx-auto">
-          {/* YallaShop - COMMENTED OUT
+        <div className="grid grid-cols-1 gap-6 md:gap-y-24 mx-auto">
           <FadeInView delay={0.05}>
             <article className="bg-gray-900/80 rounded-xl overflow-hidden border border-gray-800 shadow-lg">
               <div className="p-6">
@@ -28,14 +27,12 @@ export default function ProjectsSection() {
                       <p className="text-gray-200 text-base/7">
                         A frontend e-commerce prototype demonstrating modern
                         React and Next.js capabilities. Built with TypeScript
-                        and Tailwind CSS, it features advanced product
-                        filtering, persistent cart management, and mobile-first
-                        responsive design patterns. Deployed on Vercel.
+                        and Tailwind CSS. Deployed on Vercel.
                         <p className="mt-1">
                           <strong>
                             <i>Note: </i>
                           </strong>
-                          <i>
+                          <i className="text-gray-200">
                             This project uses static JSON for product data, in a
                             real-world application, this would typically involve
                             server-side data fetching from a database.
@@ -49,37 +46,41 @@ export default function ProjectsSection() {
                     <div className="grid grid-cols-1">
                       <div>
                         <h4 className="text-lg font-semibold text-blue-400 mb-4">
-                          Key Features:
+                          Technical Highlights:
                         </h4>
                         <ul className="space-y-3 text-base/7 text-gray-200">
                           <li>
+                            •{" "}
+                            <strong>Component-Driven UI Architecture: </strong>
+                            Nine React components with selective "use client"
+                            directives, compound component patterns and
+                            optimistic UI updates with visual state feedback
+                            (disabled → adding → added → in-cart).
+                          </li>
+                          <li>
                             • <strong>Product Filtering & Search: </strong>
-                            Search across multiple fields, and sort by various
-                            criteria. Search queries and categories persist in
-                            the URL for shareable results. Mobile uses a
-                            slide-in modal interface with apply/reset buttons
-                            and removable filter pills, while desktop provides
-                            instant filtering through integrated dropdowns.
+                            Supports multi-field search and multi-criteria
+                            sorting. Search queries and categories persist in
+                            the URL via search parameters for shareable results.
                           </li>
                           <li>
                             • <strong>Shopping Cart Management: </strong>
                             Cart state is managed through React Context and
-                            automatically saved to localStorage. The add-to-cart
-                            button changes based on context—showing "Add to
-                            Cart", "View in Cart", or a confirmation checkmark.
-                            The cart sidebar displays real-time quantity
-                            controls, item removal, and a running subtotal.
+                            persisted via localStorage. The "Add to Cart" button
+                            is context-aware, dynamically transitioning between
+                            "Add to Cart", "View in Cart", or a confirmation
+                            checkmark based on current state. The cart sidebar
+                            provides real-time quantity controls and subtotal
+                            calculations.
                           </li>
 
                           <li>
                             • <strong>Responsive Design: </strong>
-                            The interface adapts meaningfully between devices,
-                            not just in layout but in interaction patterns.
-                            Mobile prioritizes a focused, modal-based filtering
-                            experience with explicit apply/reset actions, while
-                            desktop offers immediate filtering for faster
-                            browsing. Both approaches feel native to their
-                            respective platforms.
+                            The interface adapts meaningfully between devices.
+                            Mobile prioritizes a modal-based filtering system,
+                            while desktop provides instant filtering for faster
+                            browsing, ensuring the app feels native to the
+                            user&apos;s device.
                           </li>
                         </ul>
                       </div>
@@ -125,8 +126,6 @@ export default function ProjectsSection() {
               </div>
             </article>
           </FadeInView>
-        */}
-
           {/* Personal Hub - COMMENTED OUT
           <FadeInView delay={0.05}>
             <div className="bg-gray-900/80 rounded-xl overflow-hidden border border-gray-800 shadow-lg">
@@ -222,7 +221,6 @@ export default function ProjectsSection() {
             </div>
           </FadeInView>
         */}
-
           {/* Space Reflex */}
           <FadeInView delay={0.05}>
             <article className="bg-gray-900/95 rounded-xl overflow-hidden border border-gray-800 shadow-lg">
@@ -237,16 +235,15 @@ export default function ProjectsSection() {
                   <FadeInView delay={0.1}>
                     <div>
                       <p className="text-gray-200 text-base/7">
-                        A browser game built using vanilla JS (no frameworks).
-                        It is deployed on Render.com with separated SQLite
-                        database hosting (Turso Cloud) to maintain persistent
-                        data across server redeployments/shutdowns.
+                        A full-stack browser game built using Vanilla JS on both
+                        the front and back end. Deployed on Render.com along
+                        with a separate SQLite database hosted on Turso Cloud.
                       </p>
                       <p className="mt-1">
                         <strong>
                           <i>Note: </i>
                         </strong>
-                        <i>
+                        <i className="text-gray-200">
                           Due to Render&apos;s free hosting limitations, the
                           server may take around 50 seconds to initialize from
                           an idle state.
@@ -279,7 +276,7 @@ export default function ProjectsSection() {
                             populate the leaderboard without page refresh.
                           </li>
                           <li>
-                            • <strong>Database Operations: </strong>Executes
+                            • <strong>Database Operations: </strong> Executes
                             conditional SQL queries that check existing records
                             before INSERT/UPDATE operations. Only persists new
                             high scores when players beat their previous times,
@@ -344,7 +341,6 @@ export default function ProjectsSection() {
               </div>
             </article>
           </FadeInView>
-
           {/* Photographer Portfolio - COMMENTED OUT
           <FadeInView delay={0.05}>
             <article className="bg-gray-900/80 rounded-xl overflow-hidden border border-gray-800 shadow-lg">

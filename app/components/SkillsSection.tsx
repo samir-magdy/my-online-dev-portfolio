@@ -9,7 +9,7 @@ const skills = [
   "Node.js",
   "SQL/NoSQL",
   "TailwindCSS",
-  "Bootstrap",
+  "Linux/CLI",
   "Git/Github",
   "REST APIs",
   "SEO",
