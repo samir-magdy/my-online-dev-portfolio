@@ -25,9 +25,9 @@ export default function ProjectsSection() {
                   <FadeInView delay={0.1}>
                     <div>
                       <p className="text-gray-200 text-base/7">
-                        A frontend e-commerce prototype demonstrating modern
-                        React and Next.js capabilities. Built with TypeScript
-                        and Tailwind CSS. Deployed on Vercel.
+                        A frontend e-commerce implementation demonstrating
+                        modern React and Next.js capabilities. Built with
+                        TypeScript and Tailwind CSS. Deployed on Vercel.
                         <p className="mt-1">
                           <strong>
                             <i>Note: </i>
@@ -236,8 +236,9 @@ export default function ProjectsSection() {
                     <div>
                       <p className="text-gray-200 text-base/7">
                         A full-stack browser game built using Vanilla JS on both
-                        the front and back end. Deployed on Render.com along
-                        with a separate SQLite database hosted on Turso Cloud.
+                        the front and back end (node.js). Deployed on Render.com
+                        along with a separate SQLite database hosted on Turso
+                        Cloud.
                       </p>
                       <p className="mt-1">
                         <strong>
