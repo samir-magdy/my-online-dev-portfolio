@@ -56,7 +56,11 @@ export default function ContactSection() {
             className="text-gray-300 text-sm md:text-lg md:mt-24 text-center"
           >
             <div className="flex justify-center gap-4 mt-6">
-              <a href="https://github.com/samir-magdy" title="My GitHub">
+              <a
+                href="https://github.com/samir-magdy"
+                title="My GitHub"
+                target="_blank"
+              >
                 <svg
                   className="w-7 bg-black rounded-full"
                   fill="currentColor"
@@ -69,6 +73,7 @@ export default function ContactSection() {
               <a
                 href="https://www.linkedin.com/in/samirmagdy93"
                 title="My Linkedin"
+                target="_blank"
               >
                 <svg
                   className=" w-7 bg-black rounded-lg"
