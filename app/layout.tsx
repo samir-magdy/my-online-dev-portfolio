@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     apple: "/developer-favicon.png",
   },
   description:
-    "I'm a full-stack developer specializing in the Next.js framework. Here, you can view my projects, contact info, and more.",
+    "I'm a full-stack developer specializing in the MERN stack. Here, you can view my projects, contact info, and more.",
   authors: { name: "Samir Magdy" },
   alternates: {
     canonical: "https://samirmagdy.com",
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Samir Magdy | Full-Stack Developer",
     description:
-      "I'm a full-stack developer specializing in the Next.js framework. Here, you can view my projects, contact info, and more.",
+      "I'm a full-stack developer specializing in the MERN stack. Here, you can view my projects, contact info, and more.",
     url: "https://samirmagdy.com",
     siteName: "Samir Magdy Portfolio",
     images: [
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
         url: "/og.jpg",
         width: 1200,
         height: 630,
-        alt: "Samir Magdy | Developer Portfolio",
+        alt: "Samir Magdy | Full-Stack Developer",
       },
     ],
     locale: "en_US",

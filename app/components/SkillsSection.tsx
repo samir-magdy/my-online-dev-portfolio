@@ -3,18 +3,16 @@
 import FadeInView from "./FadeInView";
 
 const skills = [
-  "JS/TS",
-  "Next.js",
-  "React.js",
+  "TypeScript",
   "Node.js",
+  "Express.js",
+  "React.js",
+  "Next.js",
   "SQL/NoSQL",
   "TailwindCSS",
-  "Linux/CLI",
   "Git/Github",
   "REST APIs",
   "SEO",
-  "Laravel",
-  "PHP",
 ];
 
 export default function SkillsSection() {
