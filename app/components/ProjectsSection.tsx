@@ -1,6 +1,19 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import FadeInView from "./FadeInView";
+
+function useIsMobile(breakpoint = 768) {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < breakpoint);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, [breakpoint]);
+
+  return isMobile;
+}
 import wikiScnShot from "../../public/wikispace.png";
 import yallaScnShot from "../../public/yallashop.png";
 import spaceReflexScnShot from "../../public/space-reflex.png";
@@ -98,10 +111,12 @@ function TechBadge({ tech }: { tech: string }) {
 }
 
 function ProjectCard({ project, delay }: { project: Project; delay: number }) {
+  const isMobile = useIsMobile();
   // State to track mouse position for the zoom effect
   const [zoomPos, setZoomPos] = useState({ x: 0, y: 0, show: false });
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (isMobile) return;
     const { left, top, width, height } =
       e.currentTarget.getBoundingClientRect();
 
@@ -116,71 +131,77 @@ function ProjectCard({ project, delay }: { project: Project; delay: number }) {
   return (
     <FadeInView delay={delay}>
       <article className="bg-gray-900/70 rounded-xl overflow-hidden border border-gray-700/95 shadow-lg h-full flex flex-col">
-        <figure className="p-6">
-          <div
-            className="relative overflow-hidden rounded-xl cursor-none"
-            onMouseMove={handleMouseMove}
-            onMouseLeave={() => setZoomPos({ ...zoomPos, show: false })}
-          >
-            {/* Base Image */}
-            <img
-              src={project.screenshot}
-              alt={project.title}
-              className={`w-full h-full object-fill transition-opacity duration-300 cursor-crosshair ${zoomPos.show ? "opacity-0" : "opacity-100"}`}
-            />
-
-            {/* Zoomed "Magnifying" Layer */}
+        <figure className="flex flex-col flex-grow">
+          <div className="p-6">
             <div
-              className={`absolute inset-0 transition-opacity duration-500 cursor-crosshair ${zoomPos.show ? "opacity-100" : "opacity-0"}`}
-              style={{
-                backgroundImage: `url(${project.screenshot})`,
-                backgroundPosition: `${zoomPos.x}% ${zoomPos.y}%`,
-                backgroundSize: "200%", // Change this to 200% or 300% to adjust zoom strength
-                backgroundRepeat: "no-repeat",
-              }}
-            />
-          </div>
-        </figure>
-
-        <div className="px-6 pb-6 flex flex-col flex-grow">
-          <h2 className="text-xl md:text-2xl font-bold mb-4 text-white tracking-wide">
-            {project.title}
-          </h2>
-
-          <div className="flex flex-col flex-grow">
-            <p className="text-gray-100 text-lg/7 flex-grow">
-              {project.description}
-            </p>
-
-            <ul
-              className="flex flex-wrap gap-2 md:gap-3 my-4 mb-6 items-center"
-              aria-label={`Technologies used in ${project.title}`}
+              className={`relative overflow-hidden rounded-xl ${isMobile ? "" : "cursor-none"}`}
+              onMouseMove={handleMouseMove}
+              onMouseLeave={() => setZoomPos({ ...zoomPos, show: false })}
             >
-              {project.technologies.map((tech) => (
-                <TechBadge key={tech} tech={tech} />
-              ))}
-            </ul>
+              {/* Base Image */}
+              <img
+                src={project.screenshot}
+                alt={`Screenshot of ${project.title}`}
+                className={`w-full h-full object-fill transition-opacity duration-300 ${isMobile ? "" : "cursor-crosshair"} ${zoomPos.show ? "opacity-0" : "opacity-100"}`}
+              />
 
-            <div className="grid grid-cols-3 gap-3 mt-auto">
-              <a
-                href={project.liveUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="col-span-2 bg-blue-900/90 text-center font-bold text-sm py-3 hover:bg-blue-900/60 text-white rounded-lg transition-colors duration-200"
-              >
-                {project.ctaText}
-              </a>
-              <a
-                href={project.repoUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-center text-sm font-bold py-3 bg-gray-100/90 hover:bg-gray-200/90 text-gray-900 rounded-lg transition-colors duration-200 backdrop-blur-sm"
-              >
-                Github
-              </a>
+              {/* Zoomed "Magnifying" Layer */}
+              {!isMobile && (
+                <div
+                  className={`absolute inset-0 transition-opacity duration-500 cursor-crosshair ${zoomPos.show ? "opacity-100" : "opacity-0"}`}
+                  style={{
+                    backgroundImage: `url(${project.screenshot})`,
+                    backgroundPosition: `${zoomPos.x}% ${zoomPos.y}%`,
+                    backgroundSize: "200%",
+                    backgroundRepeat: "no-repeat",
+                  }}
+                />
+              )}
             </div>
           </div>
-        </div>
+
+          <figcaption className="px-6 pb-6 flex flex-col flex-grow">
+            <h2 className="text-xl md:text-2xl font-bold mb-4 text-white tracking-wide">
+              {project.title}
+            </h2>
+
+            <div className="flex flex-col flex-grow">
+              <p className="text-gray-100 text-lg/7 flex-grow">
+                {project.description}
+              </p>
+
+              <ul
+                className="flex flex-wrap gap-2 md:gap-3 my-4 mb-6 items-center"
+                aria-label={`Technologies used in ${project.title}`}
+              >
+                {project.technologies.map((tech) => (
+                  <TechBadge key={tech} tech={tech} />
+                ))}
+              </ul>
+
+              <div className="grid grid-cols-3 gap-3 mt-auto">
+                <a
+                  href={project.liveUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`${project.ctaText} for ${project.title} (opens in new tab)`}
+                  className="col-span-2 bg-blue-900/90 text-center font-bold text-sm py-3 hover:bg-blue-900/60 text-white rounded-lg transition-colors duration-200 focus:outline-2 focus:outline-offset-2 focus:outline-blue-500"
+                >
+                  {project.ctaText}
+                </a>
+                <a
+                  href={project.repoUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`GitHub repository for ${project.title} (opens in new tab)`}
+                  className="text-center text-sm font-bold py-3 bg-gray-100/90 hover:bg-gray-200/90 text-gray-900 rounded-lg transition-colors duration-200 backdrop-blur-sm focus:outline-2 focus:outline-offset-2 focus:outline-blue-500"
+                >
+                  Github
+                </a>
+              </div>
+            </div>
+          </figcaption>
+        </figure>
       </article>
     </FadeInView>
   );

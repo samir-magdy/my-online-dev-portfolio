@@ -466,6 +466,7 @@ void main() {
     <div
       ref={containerRef}
       className={`light-rays-container ${className}`.trim()}
+      aria-hidden="true"
     />
   );
 };

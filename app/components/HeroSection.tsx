@@ -54,8 +54,9 @@ export default function HeroSection() {
 
   return (
     <>
-      {/* Fixed Top Navbar for Desktop */}
-      <motion.nav
+      <header>
+        {/* Fixed Top Navbar for Desktop */}
+        <motion.nav
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 2.25, duration: 0 }}
@@ -71,21 +72,21 @@ export default function HeroSection() {
             <a
               href="#portfolio"
               onClick={(e) => handleSmoothScroll(e, "#portfolio")}
-              className="nav-link-elegant uppercase text-xs font-light tracking-[0.25em] text-white/80 hover:text-white transition-colors duration-300"
+              className="nav-link-elegant uppercase text-xs font-light tracking-[0.25em] text-white/80 hover:text-white transition-colors duration-300 focus:outline-2 focus:outline-offset-4 focus:outline-blue-500 rounded-sm"
             >
               Projects
             </a>
             <a
               href="#skills"
               onClick={(e) => handleSmoothScroll(e, "#skills")}
-              className="nav-link-elegant uppercase text-xs font-light tracking-[0.25em] text-white/80 hover:text-white transition-colors duration-300"
+              className="nav-link-elegant uppercase text-xs font-light tracking-[0.25em] text-white/80 hover:text-white transition-colors duration-300 focus:outline-2 focus:outline-offset-4 focus:outline-blue-500 rounded-sm"
             >
               Skills
             </a>
             <a
               href="#contact"
               onClick={(e) => handleSmoothScroll(e, "#contact")}
-              className="nav-link-elegant uppercase text-xs font-light tracking-[0.25em] text-white/80 hover:text-white transition-colors duration-300"
+              className="nav-link-elegant uppercase text-xs font-light tracking-[0.25em] text-white/80 hover:text-white transition-colors duration-300 focus:outline-2 focus:outline-offset-4 focus:outline-blue-500 rounded-sm"
             >
               Contact
             </a>
@@ -108,7 +109,9 @@ export default function HeroSection() {
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             className="block"
-            aria-label="Menu"
+            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={isMenuOpen}
+            aria-controls="mobile-menu"
           >
             <div className="w-8 flex flex-col gap-1.5">
               <span
@@ -133,33 +136,37 @@ export default function HeroSection() {
 
       {/* Mobile Menu Overlay */}
       {isMenuOpen && (
-        <div
+        <nav
+          id="mobile-menu"
+          role="navigation"
+          aria-label="Mobile navigation"
           onClick={() => setIsMenuOpen(false)}
           className="md:hidden fixed inset-0 flex flex-col items-center justify-center gap-10 bg-black/95 backdrop-blur-2xl z-40"
         >
           <a
             href="#portfolio"
             onClick={(e) => handleSmoothScroll(e, "#portfolio")}
-            className="nav-link-elegant uppercase text-white/80 hover:text-white text-2xl font-light tracking-[0.3em] transition-colors duration-300"
+            className="nav-link-elegant uppercase text-white/80 hover:text-white text-2xl font-light tracking-[0.3em] transition-colors duration-300 focus:outline-2 focus:outline-offset-4 focus:outline-blue-500 rounded-sm"
           >
             Projects
           </a>
           <a
             href="#skills"
             onClick={(e) => handleSmoothScroll(e, "#skills")}
-            className="nav-link-elegant uppercase text-white/80 hover:text-white text-2xl font-light tracking-[0.3em] transition-colors duration-300"
+            className="nav-link-elegant uppercase text-white/80 hover:text-white text-2xl font-light tracking-[0.3em] transition-colors duration-300 focus:outline-2 focus:outline-offset-4 focus:outline-blue-500 rounded-sm"
           >
             Skills
           </a>
           <a
             href="#contact"
             onClick={(e) => handleSmoothScroll(e, "#contact")}
-            className="nav-link-elegant uppercase text-white/80 hover:text-white text-2xl font-light tracking-[0.3em] transition-colors duration-300"
+            className="nav-link-elegant uppercase text-white/80 hover:text-white text-2xl font-light tracking-[0.3em] transition-colors duration-300 focus:outline-2 focus:outline-offset-4 focus:outline-blue-500 rounded-sm"
           >
             Contact
           </a>
-        </div>
+        </nav>
       )}
+      </header>
 
       <motion.section
         id="home"

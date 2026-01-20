@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     apple: "/developer-favicon.png",
   },
   description:
-    "Full-stack JavaScript developer. Here, you can view my projects, contact info, and more.",
+    "Full-stack JavaScript developer based in Cairo, Egypt. Here, you can view my projects, contact info, and more.",
   authors: { name: "Samir Magdy" },
   alternates: {
     canonical: "https://samirmagdy.com",
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Samir Magdy | Full-Stack Developer",
     description:
-      "Full-Stack JavaScript developer. Here, you can view my projects, contact info, and more.",
+      "Full-stack JavaScript developer based in Cairo, Egypt. Here, you can view my projects, contact info, and more.",
     url: "https://samirmagdy.com",
     siteName: "Samir Magdy Portfolio",
     images: [
@@ -72,6 +72,26 @@ const personSchema = {
       "https://github.com/samir-magdy",
       "https://www.linkedin.com/in/samirmagdy93",
     ],
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Cairo",
+      addressCountry: "Egypt",
+    },
+    workLocation: {
+      "@type": "Place",
+      name: [
+        "Cairo, Egypt",
+        "Remote",
+        "Worldwide",
+        "Freelance",
+        "Cairo",
+        "Egypt",
+      ],
+    },
+    nationality: {
+      "@type": "Country",
+      name: "Egypt",
+    },
     knowsAbout: [
       "JavaScript",
       "TypeScript",
@@ -98,11 +118,17 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} antialiased`}>
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-white focus:text-black focus:rounded-md focus:outline-2 focus:outline-offset-2 focus:outline-blue-500"
+        >
+          Skip to main content
+        </a>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
         />
-        <main>{children}</main>
+        <main id="main-content">{children}</main>
         <Analytics />
       </body>
     </html>

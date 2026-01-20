@@ -54,7 +54,7 @@ export default function ContactSection() {
                 aria-label="GitHub (opens in new tab)"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:scale-110 transition-transform focus:outline-2 focus:outline-offset-2 focus:outline-blue-500 rounded-full"
+                className="focus:outline-2 focus:outline-offset-2 focus:outline-blue-500 rounded-full"
               >
                 <svg
                   className="w-7 bg-black rounded-full"
@@ -71,7 +71,7 @@ export default function ContactSection() {
                 aria-label="LinkedIn (opens in new tab)"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:scale-110 transition-transform focus:outline-2 focus:outline-offset-2 focus:outline-blue-500 rounded-lg"
+                className="focus:outline-2 focus:outline-offset-2 focus:outline-blue-500 rounded-lg"
               >
                 <svg
                   className="w-7 bg-black rounded-lg"
@@ -100,7 +100,10 @@ export default function ContactSection() {
                   strokeLinecap="round"
                 />
               </svg>
-              <span>{new Date().getFullYear()} Samir Magdy</span>
+              <time dateTime={new Date().getFullYear().toString()}>
+                {new Date().getFullYear()}
+              </time>{" "}
+              Samir Magdy
             </div>
           </FadeInView>
         </footer>
