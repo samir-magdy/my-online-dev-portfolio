@@ -12,7 +12,7 @@ export default function ContactSection() {
       <div className="max-w-3xl mx-auto px-4">
         <div className="grid grid-cols-1">
           {/* Left Column - Title, Description, Email, Social Icons */}
-          <div className="flex flex-col justify-between items-center md:items-start">
+          <div className="flex flex-col justify-between items-center">
             <FadeInView className="text-3xl md:text-4xl font-bold text-white mx-auto mb-4">
               <h1
                 id="contact-heading"
@@ -23,13 +23,11 @@ export default function ContactSection() {
             </FadeInView>
             <FadeInView
               delay={0.2}
-              className=" text-white text-xl leading-8 text-bold mb-2"
+              className="tracking-wide text-white text-xl leading-8 text-bold mb-4"
             >
               <p className="text-center">
-                I&apos;m currently seeking full-time roles and select freelance
-                partnerships that align with my expertise. To discuss a
-                potential role or project, please submit your inquiry via the
-                form below.
+                To discuss a potential project, please submit your inquiry via
+                the form below.
               </p>
             </FadeInView>
           </div>

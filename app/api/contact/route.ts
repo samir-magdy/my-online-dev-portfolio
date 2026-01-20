@@ -50,9 +50,6 @@ export async function POST(request: Request) {
     }
     // ----------------------------------------------------
 
-    // Log the attempt
-    console.log("Attempting to send email to:", process.env.CONTACT_EMAIL);
-
     // Send Email via Resend
     const data = await resend.emails.send({
       from: "Portfolio Contact Form <noreply@mail.samirmagdy.com>",
@@ -66,12 +63,8 @@ export async function POST(request: Request) {
       replyTo: email,
     });
 
-    // Log the response from Resend
-    console.log("Resend API response:", data);
-
     // Check if the email was actually sent
     if (data.error) {
-      console.error("Resend API error:", data.error);
       return NextResponse.json(
         { error: data.error.message || "Failed to send email" },
         { status: 500 }
@@ -80,7 +73,6 @@ export async function POST(request: Request) {
 
     return NextResponse.json({ success: true, id: data.data?.id });
   } catch (error) {
-    console.error("Error in contact API:", error);
     return NextResponse.json(
       {
         error: error instanceof Error ? error.message : "Failed to send email",

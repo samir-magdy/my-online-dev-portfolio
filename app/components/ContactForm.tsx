@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "motion/react";
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
@@ -131,6 +131,12 @@ export default function ContactForm() {
           onChange={(e) =>
             setFormData((prev) => ({ ...prev, message: e.target.value }))
           }
+          onKeyDown={(e) => {
+            if (e.key === "Enter" && !e.shiftKey) {
+              e.preventDefault();
+              e.currentTarget.form?.requestSubmit();
+            }
+          }}
         />
       </div>
       <button

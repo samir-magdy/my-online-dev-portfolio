@@ -1,8 +1,11 @@
+import dynamic from "next/dynamic";
 import HeroSection from "./components/HeroSection";
 import ProjectsSection from "./components/ProjectsSection";
 import SkillsSection from "./components/SkillsSection";
 import ContactSection from "./components/ContactSection";
-import LightRays from "./components/LightRays";
+
+// Lazy load heavy WebGL component - won't block initial render
+const LightRays = dynamic(() => import("./components/LightRays"), {});
 
 export default function MinimalModernPortfolio() {
   return (

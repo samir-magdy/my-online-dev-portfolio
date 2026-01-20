@@ -26,7 +26,7 @@ const projects = [
     id: "yallashop",
     title: "YallaShop (E-commerce)",
     description:
-      "A frontend e-commerce implementation featuring component-driven React architecture, context-based cart management, and responsive device-specific UI.",
+      "A frontend e-commerce implementation featuring component-driven React architecture, advanced product filtering, context-based cart management, and responsive device-specific UI.",
     technologies: ["Next.js", "TypeScript", "TailwindCSS"],
     liveUrl: "https://yallashop-frontend.vercel.app/",
     repoUrl: "https://github.com/samir-magdy/yallashop-frontend",
@@ -41,7 +41,7 @@ const projects = [
     id: "wikispace",
     title: "WikiSpace Proxy (Desktop Web-App)",
     description:
-      "A proxy server that dynamically transforms Wikipedia's interface in real-time. It intercepts HTTP requests, performs server-side HTML/CSS manipulation and delivers a lightweight and custom-built UI.",
+      "A proxy server that dynamically transforms Wikipedia's interface in real-time. It intercepts HTTP requests, performs server-side HTML/CSS manipulation, and delivers a minimalist, custom-built UI to the client.",
     technologies: ["Express.js", "JavaScript", "Cheerio", "HTML5", "CSS3"],
     liveUrl: "https://wikipedia-web-proxy.onrender.com/",
     repoUrl: "https://github.com/samir-magdy/wikipedia-web-proxy",
@@ -56,7 +56,7 @@ const projects = [
     id: "space-reflex",
     title: "Space Reflex (Browser-Game)",
     description:
-      "A full-stack browser game focusing on player reaction time, it includes a dynamic and persistent high score leaderboard and is compatible across all devices.",
+      "A browser game focused on player reaction speed. It features a custom-built HTTP server using the Node.js http module, a dynamic SQLite-powered leaderboard, and a fully responsive interface.",
     technologies: ["Node.js", "JavaScript", "SQLite", "HTML5", "CSS3"],
     liveUrl: "https://space-reflex-game.onrender.com/",
     repoUrl: "https://github.com/samir-magdy/space-reflex-game",
@@ -166,7 +166,7 @@ function ProjectCard({ project, delay }: { project: Project; delay: number }) {
             </h2>
 
             <div className="flex flex-col flex-grow">
-              <p className="text-gray-100 text-lg/7 flex-grow">
+              <p className="text-gray-100 text-lg/7 flex-grow tracking-wide">
                 {project.description}
               </p>
 

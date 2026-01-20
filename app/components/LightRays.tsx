@@ -46,7 +46,7 @@ const hexToRgb = (hex: string): [number, number, number] => {
 const getAnchorAndDir = (
   origin: RaysOrigin,
   w: number,
-  h: number
+  h: number,
 ): { anchor: [number, number]; dir: [number, number] } => {
   const outside = 0.2;
   switch (origin) {
@@ -124,7 +124,7 @@ const LightRays: React.FC<LightRaysProps> = ({
         const entry = entries[0];
         setIsVisible(entry.isIntersecting);
       },
-      { threshold: 0.1 }
+      { threshold: 0.1 },
     );
 
     observerRef.current.observe(containerRef.current);
@@ -148,7 +148,7 @@ const LightRays: React.FC<LightRaysProps> = ({
     const initializeWebGL = async () => {
       if (!containerRef.current) return;
 
-      await new Promise((resolve) => setTimeout(resolve, 10));
+      await new Promise((resolve) => setTimeout(resolve, 1000));
 
       if (!containerRef.current) return;
 
@@ -344,8 +344,7 @@ void main() {
         try {
           renderer.render({ scene: mesh });
           animationIdRef.current = requestAnimationFrame(loop);
-        } catch (error) {
-          console.warn("WebGL rendering error:", error);
+        } catch {
           return;
         }
       };
@@ -365,9 +364,8 @@ void main() {
         if (renderer) {
           try {
             const canvas = renderer.gl.canvas;
-            const loseContextExt = renderer.gl.getExtension(
-              "WEBGL_lose_context"
-            );
+            const loseContextExt =
+              renderer.gl.getExtension("WEBGL_lose_context");
             if (loseContextExt) {
               loseContextExt.loseContext();
             }
@@ -375,8 +373,8 @@ void main() {
             if (canvas && canvas.parentNode) {
               canvas.parentNode.removeChild(canvas);
             }
-          } catch (error) {
-            console.warn("Error during WebGL cleanup:", error);
+          } catch {
+            // Silently handle cleanup errors
           }
         }
 
