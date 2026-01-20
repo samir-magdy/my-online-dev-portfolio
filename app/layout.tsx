@@ -11,11 +11,6 @@ const geistSans = Geist({
 export const metadata: Metadata = {
   metadataBase: new URL("https://samirmagdy.com"),
   title: "Samir Magdy | Full-Stack Developer",
-  icons: {
-    icon: "/developer-favicon.png",
-    shortcut: "/developer-favicon.png",
-    apple: "/developer-favicon.png",
-  },
   description:
     "Full-stack JavaScript developer based in Cairo, Egypt. Here, you can view my projects, contact info, and more.",
   authors: { name: "Samir Magdy" },
@@ -30,7 +25,7 @@ export const metadata: Metadata = {
     siteName: "Samir Magdy Portfolio",
     images: [
       {
-        url: "/og.jpg",
+        url: "/og.png",
         width: 1200,
         height: 630,
         alt: "Samir Magdy | Full-Stack Developer",
