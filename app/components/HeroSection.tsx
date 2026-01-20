@@ -19,15 +19,35 @@ export default function HeroSection() {
 
   const handleSmoothScroll = (
     e: React.MouseEvent<HTMLAnchorElement>,
-    targetId: string
+    targetId: string,
   ) => {
     e.preventDefault();
     setIsMenuOpen(false);
+
+    const isDesktop = window.innerWidth >= 768;
+
+    // Mobile: keep exact current behavior
+    if (!isDesktop) {
+      const element = document.querySelector(targetId);
+      if (element) {
+        element.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }
+      return;
+    }
+
+    // Desktop: account for fixed navbar height
+    const navbarOffset = -30;
+
     const element = document.querySelector(targetId);
     if (element) {
-      element.scrollIntoView({
+      const elementPosition =
+        element.getBoundingClientRect().top + window.scrollY;
+      window.scrollTo({
+        top: elementPosition - navbarOffset,
         behavior: "smooth",
-        block: "start",
       });
     }
   };
@@ -38,40 +58,34 @@ export default function HeroSection() {
       <motion.nav
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 2.75, duration: 0 }}
+        transition={{ delay: 2.25, duration: 0 }}
         className={`
           hidden md:block
           fixed top-0 left-0 right-0 z-50
           transition-all duration-300 py-3 px-10
-          bg-gray-900/80 backdrop-blur-md
+          bg-black/10 backdrop-blur-xl
            `}
       >
-        <div className="flex justify-between items-center max-w-7xl mx-auto">
-          <div className="text-white font-bold text-2xl">
-            <a href="#" onClick={(e) => handleSmoothScroll(e, "#home")}>
-              SM
-            </a>
-          </div>
-
-          <div className="flex gap-16 items-center">
+        <div className="flex justify-center items-center max-w-7xl mx-auto">
+          <div className="flex gap-32 items-center pt-2">
             <a
               href="#portfolio"
               onClick={(e) => handleSmoothScroll(e, "#portfolio")}
-              className="tracking-wide text-xl hover:scale-110 transition-scale duration-300"
+              className="nav-link-elegant uppercase text-xs font-light tracking-[0.25em] text-white/80 hover:text-white transition-colors duration-300"
             >
               Projects
             </a>
             <a
               href="#skills"
               onClick={(e) => handleSmoothScroll(e, "#skills")}
-              className="tracking-wide text-xl hover:scale-110 transition-scale duration-300"
+              className="nav-link-elegant uppercase text-xs font-light tracking-[0.25em] text-white/80 hover:text-white transition-colors duration-300"
             >
               Skills
             </a>
             <a
               href="#contact"
               onClick={(e) => handleSmoothScroll(e, "#contact")}
-              className="tracking-wide text-xl hover:scale-110 transition-scale duration-300"
+              className="nav-link-elegant uppercase text-xs font-light tracking-[0.25em] text-white/80 hover:text-white transition-colors duration-300"
             >
               Contact
             </a>
@@ -83,21 +97,14 @@ export default function HeroSection() {
       <motion.nav
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 2.75, duration: 0 }}
+        transition={{ delay: 2.25, duration: 0 }}
         className={`
           md:hidden
           fixed top-0 left-0 right-0 z-50
           transition-all duration-300 py-3 px-6
-          ${isScrolled ? "bg-gray-900/70 backdrop-blur-2xl" : "bg-gray-900/20"}
-        `}
+          bg-black/10 backdrop-blur-xl`}
       >
-        <div className="flex justify-between items-center">
-          <div className="text-white font-bold text-2xl">
-            <a href="#" onClick={(e) => handleSmoothScroll(e, "#home")}>
-              SM
-            </a>
-          </div>
-
+        <div className="flex justify-end items-center">
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             className="block"
@@ -128,26 +135,26 @@ export default function HeroSection() {
       {isMenuOpen && (
         <div
           onClick={() => setIsMenuOpen(false)}
-          className="md:hidden fixed inset-0 flex flex-col items-center justify-center gap-8 bg-gray-900/90 backdrop-blur-2xl z-40"
+          className="md:hidden fixed inset-0 flex flex-col items-center justify-center gap-10 bg-black/95 backdrop-blur-2xl z-40"
         >
           <a
             href="#portfolio"
             onClick={(e) => handleSmoothScroll(e, "#portfolio")}
-            className="text-center font-medium text-white text-4xl shadow-lg"
+            className="nav-link-elegant uppercase text-white/80 hover:text-white text-2xl font-light tracking-[0.3em] transition-colors duration-300"
           >
             Projects
           </a>
           <a
             href="#skills"
             onClick={(e) => handleSmoothScroll(e, "#skills")}
-            className="text-center font-medium text-white text-4xl shadow-lg"
+            className="nav-link-elegant uppercase text-white/80 hover:text-white text-2xl font-light tracking-[0.3em] transition-colors duration-300"
           >
             Skills
           </a>
           <a
             href="#contact"
             onClick={(e) => handleSmoothScroll(e, "#contact")}
-            className="text-center font-medium text-white text-4xl shadow-lg"
+            className="nav-link-elegant uppercase text-white/80 hover:text-white text-2xl font-light tracking-[0.3em] transition-colors duration-300"
           >
             Contact
           </a>
@@ -167,7 +174,10 @@ export default function HeroSection() {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8 }}
             className="font-medium flex justify-center text-white px-5"
-            style={{ fontSize: "clamp(2.75rem, 12vw, 8rem)" }}
+            style={{
+              fontSize: "clamp(2.75rem, 12vw, 8rem)",
+              fontVariant: "small-caps",
+            }}
           >
             Samir Magdy
           </motion.div>
@@ -182,7 +192,7 @@ export default function HeroSection() {
               direction="bottom"
               stepDuration={0.2}
               delay={700}
-              initialDelay={500}
+              initialDelay={200}
             />
           </div>
         </div>

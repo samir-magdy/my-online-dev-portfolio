@@ -3,3 +3,5 @@ Allow: /
 
 Disallow: /api/
 Disallow: /_next/
+
+Sitemap: https://samirmagdy.com/sitemap.xml

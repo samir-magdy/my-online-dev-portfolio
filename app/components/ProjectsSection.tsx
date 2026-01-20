@@ -1,445 +1,221 @@
 "use client";
-
+import { useState } from "react";
 import FadeInView from "./FadeInView";
-import Link from "next/link";
+import wikiScnShot from "../../public/wikispace.png";
+import yallaScnShot from "../../public/yallashop.png";
+import spaceReflexScnShot from "../../public/space-reflex.png";
 
+// ============================================
+// DATA: Single source of truth for projects
+// ============================================
+const projects = [
+  {
+    id: "yallashop",
+    title: "YallaShop (E-commerce)",
+    description:
+      "A frontend e-commerce implementation featuring component-driven React architecture, context-based cart management, and responsive device-specific UI.",
+    technologies: ["Next.js", "TypeScript", "TailwindCSS"],
+    liveUrl: "https://yallashop-frontend.vercel.app/",
+    repoUrl: "https://github.com/samir-magdy/yallashop-frontend",
+    screenshot: yallaScnShot.src,
+    ctaText: "Live Demo",
+    schema: {
+      applicationCategory: "E-commerce",
+      license: "https://opensource.org/licenses/MIT",
+    },
+  },
+  {
+    id: "wikispace",
+    title: "WikiSpace Proxy (Desktop Web-App)",
+    description:
+      "A proxy server that dynamically transforms Wikipedia's interface in real-time. It intercepts HTTP requests, performs server-side HTML/CSS manipulation and delivers a lightweight and custom-built UI.",
+    technologies: ["Express.js", "JavaScript", "Cheerio", "HTML5", "CSS3"],
+    liveUrl: "https://wikipedia-web-proxy.onrender.com/",
+    repoUrl: "https://github.com/samir-magdy/wikipedia-web-proxy",
+    screenshot: wikiScnShot.src,
+    ctaText: "Live Demo",
+    schema: {
+      applicationCategory: "Proxy Server",
+      license: "https://opensource.org/licenses/MIT",
+    },
+  },
+  {
+    id: "space-reflex",
+    title: "Space Reflex (Browser-Game)",
+    description:
+      "A full-stack browser game focusing on player reaction time, it includes a dynamic and persistent high score leaderboard and is compatible across all devices.",
+    technologies: ["Node.js", "JavaScript", "SQLite", "HTML5", "CSS3"],
+    liveUrl: "https://space-reflex-game.onrender.com/",
+    repoUrl: "https://github.com/samir-magdy/space-reflex-game",
+    screenshot: spaceReflexScnShot.src,
+    ctaText: "Live Demo",
+    schema: {
+      applicationCategory: "Game",
+      license: "https://opensource.org/licenses/MIT",
+    },
+  },
+] as const;
+
+type Project = (typeof projects)[number];
+
+// ============================================
+// STRUCTURED DATA
+// ============================================
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: "Web Development Projects Portfolio",
+  description: "Featured full-stack web development projects",
+  numberOfItems: projects.length,
+  itemListElement: projects.map((project, index) => ({
+    "@type": "ListItem",
+    position: index + 1,
+    item: {
+      "@type": "SoftwareApplication",
+      name: project.title,
+      description: project.description,
+      applicationCategory: project.schema.applicationCategory,
+      url: project.liveUrl,
+      codeRepository: project.repoUrl,
+      programmingLanguage: project.technologies.join(", "),
+      license: project.schema.license,
+      inLanguage: "en",
+    },
+  })),
+};
+
+// ============================================
+// COMPONENTS
+// ============================================
+function TechBadge({ tech }: { tech: string }) {
+  return (
+    <li className="flex">
+      <span className="text-md px-3 py-1 bg-gray-800 text-white rounded-full border border-gray-700 shadow-sm">
+        {tech}
+      </span>
+    </li>
+  );
+}
+
+function ProjectCard({ project, delay }: { project: Project; delay: number }) {
+  // State to track mouse position for the zoom effect
+  const [zoomPos, setZoomPos] = useState({ x: 0, y: 0, show: false });
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const { left, top, width, height } =
+      e.currentTarget.getBoundingClientRect();
+
+    // Use clientX/Y to get coordinates relative to the viewport
+    // then subtract left/top of the element to get local coordinates
+    const x = ((e.clientX - left) / width) * 100;
+    const y = ((e.clientY - top) / height) * 100;
+
+    setZoomPos({ x, y, show: true });
+  };
+
+  return (
+    <FadeInView delay={delay}>
+      <article className="bg-gray-900/70 rounded-xl overflow-hidden border border-gray-700/95 shadow-lg h-full flex flex-col">
+        <figure className="p-6">
+          <div
+            className="relative overflow-hidden rounded-xl cursor-none"
+            onMouseMove={handleMouseMove}
+            onMouseLeave={() => setZoomPos({ ...zoomPos, show: false })}
+          >
+            {/* Base Image */}
+            <img
+              src={project.screenshot}
+              alt={project.title}
+              className={`w-full h-full object-fill transition-opacity duration-300 cursor-crosshair ${zoomPos.show ? "opacity-0" : "opacity-100"}`}
+            />
+
+            {/* Zoomed "Magnifying" Layer */}
+            <div
+              className={`absolute inset-0 transition-opacity duration-500 cursor-crosshair ${zoomPos.show ? "opacity-100" : "opacity-0"}`}
+              style={{
+                backgroundImage: `url(${project.screenshot})`,
+                backgroundPosition: `${zoomPos.x}% ${zoomPos.y}%`,
+                backgroundSize: "200%", // Change this to 200% or 300% to adjust zoom strength
+                backgroundRepeat: "no-repeat",
+              }}
+            />
+          </div>
+        </figure>
+
+        <div className="px-6 pb-6 flex flex-col flex-grow">
+          <h2 className="text-xl md:text-2xl font-bold mb-4 text-white tracking-wide">
+            {project.title}
+          </h2>
+
+          <div className="flex flex-col flex-grow">
+            <p className="text-gray-100 text-lg/7 flex-grow">
+              {project.description}
+            </p>
+
+            <ul
+              className="flex flex-wrap gap-2 md:gap-3 my-4 mb-6 items-center"
+              aria-label={`Technologies used in ${project.title}`}
+            >
+              {project.technologies.map((tech) => (
+                <TechBadge key={tech} tech={tech} />
+              ))}
+            </ul>
+
+            <div className="grid grid-cols-3 gap-3 mt-auto">
+              <a
+                href={project.liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="col-span-2 bg-blue-900/90 text-center font-bold text-sm py-3 hover:bg-blue-900/60 text-white rounded-lg transition-colors duration-200"
+              >
+                {project.ctaText}
+              </a>
+              <a
+                href={project.repoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-center text-sm font-bold py-3 bg-gray-100/90 hover:bg-gray-200/90 text-gray-900 rounded-lg transition-colors duration-200 backdrop-blur-sm"
+              >
+                Github
+              </a>
+            </div>
+          </div>
+        </div>
+      </article>
+    </FadeInView>
+  );
+}
+// ============================================
+// MAIN COMPONENT
+// ============================================
 export default function ProjectsSection() {
   return (
-    <section id="portfolio" className="pt-20 pb-32 md:pt-24 md:pb-40 px-4">
-      <div className="max-w-4xl mx-auto">
-        <FadeInView className="text-3xl md:text-4xl font-bold mb-6 md:mb-8 text-center text-white">
-          <h2>Projects</h2>
-        </FadeInView>
+    <section
+      id="portfolio"
+      className="pt-20 pb-32 md:pt-24 md:pb-40 px-4"
+      aria-labelledby="portfolio-heading"
+    >
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
 
-        <div className="grid grid-cols-1 gap-6 md:gap-y-24 mx-auto">
-          <FadeInView delay={0.05}>
-            <article className="bg-gray-900/80 rounded-xl overflow-hidden border border-gray-800 shadow-lg">
-              <div className="p-6">
-                <FadeInView delay={0.075}>
-                  <h3 className="text-xl md:text-2xl font-bold mb-4 text-white">
-                    YallaShop (Front-end)
-                  </h3>
-                </FadeInView>
+      <div className="max-w-3xl mx-auto">
+        <h1
+          id="portfolio-heading"
+          className="main-headers text-3xl md:text-4xl font-bold mb-5 text-center text-white"
+        >
+          Projects
+        </h1>
 
-                <div className="space-y-4">
-                  <FadeInView delay={0.1}>
-                    <div>
-                      <p className="text-gray-200 text-base/7">
-                        A frontend e-commerce implementation demonstrating
-                        modern React and Next.js capabilities. Built with
-                        TypeScript and Tailwind CSS. Deployed on Vercel.
-                        <p className="mt-1">
-                          <strong>
-                            <i>Note: </i>
-                          </strong>
-                          <i className="text-gray-200">
-                            This project uses static JSON for product data, in a
-                            real-world application, this would typically involve
-                            server-side data fetching from a database.
-                          </i>
-                        </p>
-                      </p>
-                    </div>
-                  </FadeInView>
-
-                  <FadeInView delay={0.125}>
-                    <div className="grid grid-cols-1">
-                      <div>
-                        <h4 className="text-lg font-semibold text-blue-400 mb-4">
-                          Technical Highlights:
-                        </h4>
-                        <ul className="space-y-3 text-base/7 text-gray-200">
-                          <li>
-                            •{" "}
-                            <strong>Component-Driven UI Architecture: </strong>
-                            Nine React components with selective "use client"
-                            directives, compound component patterns and
-                            optimistic UI updates with visual state feedback
-                            (disabled → adding → added → in-cart).
-                          </li>
-                          <li>
-                            • <strong>Product Filtering & Search: </strong>
-                            Supports multi-field search and multi-criteria
-                            sorting. Search queries and categories persist in
-                            the URL via search parameters for shareable results.
-                          </li>
-                          <li>
-                            • <strong>Shopping Cart Management: </strong>
-                            Cart state is managed through React Context and
-                            persisted via localStorage. The "Add to Cart" button
-                            is context-aware, dynamically transitioning between
-                            "Add to Cart", "View in Cart", or a confirmation
-                            checkmark based on current state. The cart sidebar
-                            provides real-time quantity controls and subtotal
-                            calculations.
-                          </li>
-
-                          <li>
-                            • <strong>Responsive Design: </strong>
-                            The interface adapts meaningfully between devices.
-                            Mobile prioritizes a modal-based filtering system,
-                            while desktop provides instant filtering for faster
-                            browsing, ensuring the app feels native to the
-                            user&apos;s device.
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </FadeInView>
-
-                  <FadeInView delay={0.15}>
-                    <div className="flex flex-wrap gap-2 md:gap-4 my-5">
-                      <span className="text-sm px-2 py-0.5 bg-gray-800 text-white rounded-xl border border-gray-700 hover:border-blue-500/50 hover:bg-gray-700/70 hover:scale-110 hover:-translate-y-1 transition-all duration-300 cursor-default">
-                        Next.js
-                      </span>
-                      <span className="text-sm px-2 py-0.5 bg-gray-800 text-white rounded-xl border border-gray-700 hover:border-blue-500/50 hover:bg-gray-700/70 hover:scale-110 hover:-translate-y-1 transition-all duration-300 cursor-default">
-                        React.js
-                      </span>
-                      <span className="text-sm px-2 py-0.5 bg-gray-800 text-white rounded-xl border border-gray-700 hover:border-blue-500/50 hover:bg-gray-700/70 hover:scale-110 hover:-translate-y-1 transition-all duration-300 cursor-default">
-                        TypeScript
-                      </span>
-                      <span className="text-sm px-2 py-0.5 bg-gray-800 text-white rounded-xl border border-gray-700 hover:border-blue-500/50 hover:bg-gray-700/70 hover:scale-110 hover:-translate-y-1 transition-all duration-300 cursor-default">
-                        TailwindCSS
-                      </span>
-                    </div>
-                  </FadeInView>
-
-                  <FadeInView delay={0.175}>
-                    <div className="flex gap-3">
-                      <Link
-                        href="https://yallashop-frontend.vercel.app/"
-                        target="_blank"
-                        className="grow-[6] bg-blue-800/90 text-center font-bold text-sm py-3 hover:bg-blue-900/90 text-white rounded-lg transition-all duration-300"
-                      >
-                        Visit Website
-                      </Link>
-                      <Link
-                        href="https://github.com/samir-magdy/yallashop-ecommerce-frontend"
-                        target="_blank"
-                        className="text-center grow text-sm font-bold md:px-12 px-3 py-3 bg-gray-100/90 hover:bg-gray-200/90 text-gray-900 rounded-lg transition-all duration-300 backdrop-blur-sm"
-                      >
-                        View Code
-                      </Link>
-                    </div>
-                  </FadeInView>
-                </div>
-              </div>
-            </article>
-          </FadeInView>
-          {/* Personal Hub - COMMENTED OUT
-          <FadeInView delay={0.05}>
-            <div className="bg-gray-900/80 rounded-xl overflow-hidden border border-gray-800 shadow-lg">
-              <div className="p-6">
-                <FadeInView delay={0.075}>
-                  <h3 className="text-xl md:text-2xl font-bold mb-4 text-white">
-                    My Hub (Full-Stack)
-                  </h3>
-                </FadeInView>
-
-                <div className="space-y-4">
-                  <FadeInView delay={0.1}>
-                    <div>
-                      <p className="text-gray-200 text-base/7">
-                        A personalized productivity/utility app including
-                        weather, news and exchange rate APIs; A to-do list and
-                        much more. (Currently only supports Egyptian
-                        time/weather).
-                      </p>
-                    </div>
-                  </FadeInView>
-
-                  <FadeInView delay={0.125}>
-                    <div className="grid grid-cols-1">
-                      <div>
-                        <h4 className="text-lg font-semibold text-blue-400 mb-4">
-                          Key Features:
-                        </h4>
-                        <ul className="space-y-3 text-base/7 text-gray-200">
-                          <li>
-                            • <strong>API Integration: </strong>
-                            Service classes that fetch and cache third-party
-                            data to populate news, exchange rate and weather
-                            views
-                          </li>
-                          <li>
-                            • <strong>User Authentication: </strong> Laravel
-                            Breeze scaffolding, functioning password reset flow
-                            and middleware routes
-                          </li>
-                          <li>
-                            • <strong>CRUD: </strong> Persistent user data
-                            across all devices for to-dos, bookmarks, and
-                            calendar events using Laravel&apos;s Eloquent ORM
-                            with MySQL
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </FadeInView>
-
-                  <FadeInView delay={0.15}>
-                    <div className="flex flex-wrap gap-2 md:gap-4 mb-5">
-                      <span className="text-sm px-2 py-0.5 bg-gray-800 text-white rounded-xl border border-gray-700 hover:border-blue-500/50 hover:bg-gray-700/70 hover:scale-110 hover:-translate-y-1 transition-all duration-300 cursor-default">
-                        Laravel
-                      </span>
-                      <span className="text-sm px-2 py-0.5 bg-gray-800 text-white rounded-xl border border-gray-700 hover:border-blue-500/50 hover:bg-gray-700/70 hover:scale-110 hover:-translate-y-1 transition-all duration-300 cursor-default">
-                        MySQL
-                      </span>
-                      <span className="text-sm px-2 py-0.5 bg-gray-800 text-white rounded-xl border border-gray-700 hover:border-blue-500/50 hover:bg-gray-700/70 hover:scale-110 hover:-translate-y-1 transition-all duration-300 cursor-default">
-                        Vanilla JS
-                      </span>
-
-                      <span className="text-sm px-2 py-0.5 bg-gray-800 text-white rounded-xl border border-gray-700 hover:border-blue-500/50 hover:bg-gray-700/70 hover:scale-110 hover:-translate-y-1 transition-all duration-300 cursor-default">
-                        TailwindCSS
-                      </span>
-                      <span className="text-sm px-2 py-0.5 bg-gray-800 text-white rounded-xl border border-gray-700 hover:border-blue-500/50 hover:bg-gray-700/70 hover:scale-110 hover:-translate-y-1 transition-all duration-300 cursor-default">
-                        CSS3
-                      </span>
-                    </div>
-                  </FadeInView>
-
-                  <FadeInView delay={0.175}>
-                    <div className="flex gap-3">
-                      <Link
-                        href="https://personal-space-dashboard.laravel.cloud/login"
-                        target="_blank"
-                        className="flex-grow bg-blue-800/90 text-center font-bold text-sm py-3 hover:bg-blue-900/90 text-white rounded-lg transition-all duration-300"
-                      >
-                        Launch WebApp
-                      </Link>
-                      <Link
-                        href="https://github.com/samir-magdy/personal-space-dashboard"
-                        target="_blank"
-                        className="text-sm font-bold md:px-12 px-3 py-3 bg-gray-100/90 hover:bg-gray-200/90 text-gray-900 rounded-lg transition-all duration-300 backdrop-blur-sm"
-                      >
-                        View Code
-                      </Link>
-                    </div>
-                  </FadeInView>
-                </div>
-              </div>
-            </div>
-          </FadeInView>
-        */}
-          {/* Space Reflex */}
-          <FadeInView delay={0.05}>
-            <article className="bg-gray-900/95 rounded-xl overflow-hidden border border-gray-800 shadow-lg">
-              <div className="p-6">
-                <FadeInView delay={0.075}>
-                  <h3 className="text-xl md:text-2xl font-bold mb-4 text-white">
-                    Space Reflex Game (Full-Stack)
-                  </h3>
-                </FadeInView>
-
-                <div className="space-y-4">
-                  <FadeInView delay={0.1}>
-                    <div>
-                      <p className="text-gray-200 text-base/7">
-                        A full-stack browser game built using Vanilla JS on both
-                        the front and back end (node.js). Deployed on Render.com
-                        along with a separate SQLite database hosted on Turso
-                        Cloud.
-                      </p>
-                      <p className="mt-1">
-                        <strong>
-                          <i>Note: </i>
-                        </strong>
-                        <i className="text-gray-200">
-                          Due to Render&apos;s free hosting limitations, the
-                          server may take around 50 seconds to initialize from
-                          an idle state.
-                        </i>
-                      </p>
-                    </div>
-                  </FadeInView>
-
-                  <FadeInView delay={0.125}>
-                    <div className="grid grid-cols-1">
-                      <div>
-                        <h4 className="text-lg font-semibold text-blue-400 mb-4">
-                          Technical Highlights:
-                        </h4>
-                        <ul className="space-y-3 text-base/7 text-gray-200">
-                          <li>
-                            • <strong>HTTP Server: </strong>
-                            Node.js server built from scratch using the http
-                            module that handles manual route parsing,
-                            server-side validation, and request body handling.
-                            Implements three RESTful endpoints, managing
-                            GET/POST requests with proper status codes, headers,
-                            and error handling.
-                          </li>
-                          <li>
-                            • <strong>Dynamic UI Management: </strong>
-                            Event-driven DOM manipulation controlling element
-                            visibility and keyframe animations based on game
-                            state, with real-time updates via fetch API to
-                            populate the leaderboard without page refresh.
-                          </li>
-                          <li>
-                            • <strong>Database Operations: </strong> Executes
-                            conditional SQL queries that check existing records
-                            before INSERT/UPDATE operations. Only persists new
-                            high scores when players beat their previous times,
-                            preventing duplicate usernames via a dedicated
-                            name-check endpoint.
-                          </li>
-                          <li>
-                            • <strong>Session Management: </strong> Implements
-                            username persistence and first-visit tracking using
-                            browser localStorage instead of traditional
-                            authentication. Conditionally displays instruction
-                            modal for new users while maintaining identity
-                            across browser sessions, with name-change
-                            functionality that replaces stored credentials.
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </FadeInView>
-
-                  {/* Technology Tags */}
-                  <FadeInView delay={0.15}>
-                    <div className="flex flex-wrap gap-2 md:gap-4 mb-5">
-                      <span className="text-sm px-2 py-0.5 bg-gray-800 text-white rounded-xl border border-gray-700 hover:border-blue-500/50 hover:bg-gray-700/70 hover:scale-110 hover:-translate-y-1 transition-all duration-300 cursor-default">
-                        Node.js
-                      </span>
-                      <span className="text-sm px-2 py-0.5 bg-gray-800 text-white rounded-xl border border-gray-700 hover:border-blue-500/50 hover:bg-gray-700/70 hover:scale-110 hover:-translate-y-1 transition-all duration-300 cursor-default">
-                        Vanilla JS
-                      </span>
-                      <span className="text-sm px-2 py-0.5 bg-gray-800 text-white rounded-xl border border-gray-700 hover:border-blue-500/50 hover:bg-gray-700/70 hover:scale-110 hover:-translate-y-1 transition-all duration-300 cursor-default">
-                        SQLite
-                      </span>
-                      <span className="text-sm px-2 py-0.5 bg-gray-800 text-white rounded-xl border border-gray-700 hover:border-blue-500/50 hover:bg-gray-700/70 hover:scale-110 hover:-translate-y-1 transition-all duration-300 cursor-default">
-                        CSS3
-                      </span>
-                      <span className="text-sm px-2 py-0.5 bg-gray-800 text-white rounded-xl border border-gray-700 hover:border-blue-500/50 hover:bg-gray-700/70 hover:scale-110 hover:-translate-y-1 transition-all duration-300 cursor-default">
-                        HTML5
-                      </span>
-                    </div>
-                  </FadeInView>
-
-                  {/* Project Links */}
-                  <FadeInView delay={0.175}>
-                    <div className="flex gap-3">
-                      <Link
-                        href="https://space-reflex-game.onrender.com/"
-                        target="_blank"
-                        className="grow-[6] bg-blue-800/90 text-center font-bold text-sm py-3 hover:bg-blue-900/90 text-white rounded-lg transition-all duration-300"
-                      >
-                        Launch Game
-                      </Link>
-                      <Link
-                        href="https://github.com/samir-magdy/space-reflex-game"
-                        target="_blank"
-                        className="text-center grow text-sm font-bold md:px-12 px-3 py-3 bg-gray-100/90 hover:bg-gray-200/90 text-gray-900 rounded-lg transition-all duration-300 backdrop-blur-sm"
-                      >
-                        View Code
-                      </Link>
-                    </div>
-                  </FadeInView>
-                </div>
-              </div>
-            </article>
-          </FadeInView>
-          {/* Photographer Portfolio - COMMENTED OUT
-          <FadeInView delay={0.05}>
-            <article className="bg-gray-900/80 rounded-xl overflow-hidden border border-gray-800 shadow-lg">
-              <div className="p-6">
-                <FadeInView delay={0.075}>
-                  <h3 className="text-xl md:text-2xl font-bold mb-4 text-white">
-                    Photographer Portfolio (Front-End)
-                  </h3>
-                </FadeInView>
-
-                <div className="space-y-4">
-                  <FadeInView delay={0.1}>
-                    <div>
-                      <p className="text-gray-200 text-base/7">
-                        A mobile-optimized, photographer&apos;s portfolio
-                        landing page. Features a filterable gallery with around
-                        40 high resolution images stored on the server. Hosted
-                        on GitHub pages.
-                      </p>
-                    </div>
-                  </FadeInView>
-
-                  <FadeInView delay={0.125}>
-                    <div className="grid grid-cols-1">
-                      <div>
-                        <h4 className="text-lg font-semibold text-blue-400 mb-4">
-                          Key Features:
-                        </h4>
-                        <ul className="space-y-3 text-base/7 text-gray-200">
-                          <li>
-                            • <strong>Photo-Gallery: </strong> Instant category
-                            filtering using JavaScript with CSS visibility
-                            classes
-                          </li>
-                          <li>
-                            • <strong>Deferred Loading: </strong>
-                            logical loading prioritization for different images
-                            resulting in &apos;faster&apos; perceived
-                            performance
-                          </li>
-                          <li>
-                            • <strong>Device-Specific UX: </strong>Animation
-                            hints for touch/swipe support and hover detection
-                            disabled on mobile
-                          </li>
-                          <li>
-                            • <strong>Responsive Design: </strong>
-                            use of CSS media queries and conditional hero
-                            section display for desktop/mobile
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </FadeInView>
-
-                  <FadeInView delay={0.15}>
-                    <div className="flex flex-wrap gap-2 md:gap-4 mb-5">
-                      <span className="text-sm px-2 py-0.5 bg-gray-800 text-white rounded-xl border border-gray-700 hover:border-blue-500/50 hover:bg-gray-700/70 hover:scale-110 hover:-translate-y-1 transition-all duration-300 cursor-default">
-                        HTML5
-                      </span>
-                      <span className="text-sm px-2 py-0.5 bg-gray-800 text-white rounded-xl border border-gray-700 hover:border-blue-500/50 hover:bg-gray-700/70 hover:scale-110 hover:-translate-y-1 transition-all duration-300 cursor-default">
-                        CSS3
-                      </span>
-                      <span className="text-sm px-2 py-0.5 bg-gray-800 text-white rounded-xl border border-gray-700 hover:border-blue-500/50 hover:bg-gray-700/70 hover:scale-110 hover:-translate-y-1 transition-all duration-300 cursor-default">
-                        Vanilla JS
-                      </span>
-                      <span className="text-sm px-2 py-0.5 bg-gray-800 text-white rounded-xl border border-gray-700 hover:border-blue-500/50 hover:bg-gray-700/70 hover:scale-110 hover:-translate-y-1 transition-all duration-300 cursor-default">
-                        Bootstrap5
-                      </span>
-                      <span className="text-sm px-2 py-0.5 bg-gray-800 text-white rounded-xl border border-gray-700 hover:border-blue-500/50 hover:bg-gray-700/70 hover:scale-110 hover:-translate-y-1 transition-all duration-300 cursor-default">
-                        GLightbox
-                      </span>
-                    </div>
-                  </FadeInView>
-
-                  <FadeInView delay={0.175}>
-                    <div className="flex gap-3">
-                      <Link
-                        href="https://samir-magdy.github.io/personal-portfolio/"
-                        target="_blank"
-                        className="grow-[6] bg-blue-800/90 text-center font-bold text-sm py-3 hover:bg-blue-900/90 text-white rounded-lg transition-all duration-300"
-                      >
-                        Visit Website
-                      </Link>
-                      <Link
-                        href="https://github.com/samir-magdy/personal-portfolio"
-                        target="_blank"
-                        className="text-center grow text-sm font-bold md:px-12 px-3 py-3 bg-gray-100/90 hover:bg-gray-200/90 text-gray-900 rounded-lg transition-all duration-300 backdrop-blur-sm"
-                      >
-                        View Code
-                      </Link>
-                    </div>
-                  </FadeInView>
-                </div>
-              </div>
-            </article>
-          </FadeInView>
-        */}
+        <div className="grid grid-cols-1 gap-20 mx-auto">
+          {projects.map((project, index) => (
+            <ProjectCard
+              key={project.id}
+              project={project}
+              delay={(index + 1) * 0.1}
+            />
+          ))}
         </div>
       </div>
     </section>

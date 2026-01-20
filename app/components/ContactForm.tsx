@@ -57,18 +57,26 @@ export default function ContactForm() {
   };
 
   return (
-    <form className="text-start pt-2 relative" onSubmit={handleSubmit}>
+    <form
+      className="text-start pt-2 relative"
+      onSubmit={handleSubmit}
+      aria-label="Contact form"
+    >
       <div>
         <label
           htmlFor="name"
-          className=" block text-sm font-bold text-gray-300 mb-2 ms-1"
+          className="block text-sm font-bold text-gray-300 mb-2 ms-1"
         >
-          Name
+          Name{" "}
+          <span className="text-orange-600 opacity-90" aria-label="required">
+            *
+          </span>
         </label>
         <input
           type="text"
           id="name"
           required
+          aria-required="true"
           placeholder="Your name"
           className="mb-4 text-xl w-full h-14 px-4 rounded-lg border border-gray-700 bg-gray-900/95 text-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors"
           value={formData.name}
@@ -81,14 +89,18 @@ export default function ContactForm() {
       <div>
         <label
           htmlFor="email"
-          className=" block text-sm font-bold text-gray-300 mb-2 ms-1"
+          className="block text-sm font-bold text-gray-300 mb-2 ms-1"
         >
-          Email
+          Email{" "}
+          <span className="text-orange-600 opacity-90" aria-label="required">
+            *
+          </span>
         </label>
         <input
           type="email"
           id="email"
           required
+          aria-required="true"
           placeholder="Your email"
           className="mb-4 text-xl w-full h-14 px-4 rounded-lg border border-gray-700 bg-gray-900/95 text-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors"
           value={formData.email}
@@ -101,13 +113,17 @@ export default function ContactForm() {
       <div>
         <label
           htmlFor="message"
-          className=" block text-sm font-bold text-gray-300 mb-2 ms-1"
+          className="block text-sm font-bold text-gray-300 mb-2 ms-1"
         >
-          Message
+          Message{" "}
+          <span className="text-orange-600 opacity-90" aria-label="required">
+            *
+          </span>
         </label>
         <textarea
           id="message"
           required
+          aria-required="true"
           rows={4}
           placeholder="Describe your project or inquiry..."
           className="mb-4 text-xl w-full px-4 py-2 rounded-lg border border-gray-700 bg-gray-900/95 text-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors"
@@ -120,7 +136,8 @@ export default function ContactForm() {
       <button
         type="submit"
         disabled={status === "loading"}
-        className="w-full mx-auto block bg-blue-800 font-bold text-lg py-4 hover:bg-blue-900/90 text-white rounded-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+        aria-busy={status === "loading"}
+        className="w-full mx-auto block bg-blue-800 font-bold text-lg py-4 hover:bg-blue-900/90 focus:outline-2 focus:outline-offset-2 focus:outline-blue-400 text-white rounded-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
       >
         {status === "loading" ? "Sending..." : "Submit Form"}
       </button>
@@ -128,6 +145,8 @@ export default function ContactForm() {
       <AnimatePresence>
         {status === "success" && (
           <motion.div
+            role="status"
+            aria-live="polite"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
@@ -141,6 +160,7 @@ export default function ContactForm() {
                 viewBox="0 0 24 24"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
               >
                 <path
                   d="M5 13L9 17L19 7"
@@ -158,6 +178,8 @@ export default function ContactForm() {
 
       {status === "error" && (
         <motion.div
+          role="alert"
+          aria-live="assertive"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -20 }}

@@ -9,3 +9,36 @@
     }
   }
 }
+
+/* Elegant nav link with animated underline */
+.nav-link-elegant {
+  position: relative;
+  padding-bottom: 8px;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+.nav-link-elegant::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    white 20%,
+    white 80%,
+    transparent 100%
+  );
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transform: translateX(-50%);
+}
+
+.nav-link-elegant:hover::after {
+  width: 110%;
+}
+.main-headers {
+  font-variant: small-caps;
+  letter-spacing: 1px;
+}
