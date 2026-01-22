@@ -10,17 +10,20 @@ const geistSans = Geist({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://samirmagdy.com"),
-  title: "Samir Magdy | Full-Stack Developer",
+  icons: {
+    icon: "/favicon.png",
+  },
+  title: "Samir Magdy | Web Developer",
   description:
-    "Full stack JavaScript developer based in Cairo, Egypt. Here, you can view my projects, contact info, and more.",
+    "Full-stack JavaScript developer based in Cairo, Egypt. Here you can view my projects, contact info, and more.",
   authors: { name: "Samir Magdy" },
   alternates: {
     canonical: "https://samirmagdy.com",
   },
   openGraph: {
-    title: "Samir Magdy | Full-Stack Developer",
+    title: "Samir Magdy | Web Developer",
     description:
-      "Full stack JavaScript developer based in Cairo, Egypt. Here, you can view my projects, contact info, and more.",
+      "Full-stack JavaScript developer based in Cairo, Egypt. Here you can view my projects, contact info, and more.",
     url: "https://samirmagdy.com",
     siteName: "Samir Magdy Portfolio",
     images: [
@@ -28,7 +31,7 @@ export const metadata: Metadata = {
         url: "/open-graph.jpg",
         width: 1200,
         height: 630,
-        alt: "Samir Magdy | Full-Stack Developer",
+        alt: "Samir Magdy | Web Developer",
       },
     ],
     locale: "en_US",
