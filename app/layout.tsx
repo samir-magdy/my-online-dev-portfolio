@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Geist } from "next/font/google";
-import "./globals.css";
+import "./styles/globals.css";
 import { Analytics } from "@vercel/analytics/next";
 
 const geistSans = Geist({
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     siteName: "Samir Magdy Portfolio",
     images: [
       {
-        url: "/og.jpg",
+        url: "/open-graph.jpg",
         width: 1200,
         height: 630,
         alt: "Samir Magdy | Full-Stack Developer",

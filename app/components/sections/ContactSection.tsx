@@ -1,7 +1,8 @@
 "use client";
 
-import FadeInView from "./FadeInView";
-import ContactForm from "./ContactForm";
+import FadeInView from "../effects/FadeInView";
+import ContactForm from "../ui/ContactForm";
+
 export default function ContactSection() {
   return (
     <section

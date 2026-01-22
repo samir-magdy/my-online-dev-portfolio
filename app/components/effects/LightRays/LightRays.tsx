@@ -2,7 +2,7 @@
 
 import { useRef, useEffect, useState } from "react";
 import { Renderer, Program, Triangle, Mesh } from "ogl";
-import "./LightRays.css";
+import "../../../styles/globals.css";
 
 export type RaysOrigin =
   | "top-center"
@@ -31,6 +31,27 @@ interface LightRaysProps {
 }
 
 const DEFAULT_COLOR = "#ffffff";
+
+type Vec2 = [number, number];
+type Vec3 = [number, number, number];
+
+interface Uniforms {
+  iTime: { value: number };
+  iResolution: { value: Vec2 };
+  rayPos: { value: Vec2 };
+  rayDir: { value: Vec2 };
+  raysColor: { value: Vec3 };
+  raysSpeed: { value: number };
+  lightSpread: { value: number };
+  rayLength: { value: number };
+  pulsating: { value: number };
+  fadeDistance: { value: number };
+  saturation: { value: number };
+  mousePos: { value: Vec2 };
+  mouseInfluence: { value: number };
+  noiseAmount: { value: number };
+  distortion: { value: number };
+}
 
 const hexToRgb = (hex: string): [number, number, number] => {
   const m = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
@@ -68,27 +89,6 @@ const getAnchorAndDir = (
       return { anchor: [0.5 * w, -outside * h], dir: [0, 1] };
   }
 };
-
-type Vec2 = [number, number];
-type Vec3 = [number, number, number];
-
-interface Uniforms {
-  iTime: { value: number };
-  iResolution: { value: Vec2 };
-  rayPos: { value: Vec2 };
-  rayDir: { value: Vec2 };
-  raysColor: { value: Vec3 };
-  raysSpeed: { value: number };
-  lightSpread: { value: number };
-  rayLength: { value: number };
-  pulsating: { value: number };
-  fadeDistance: { value: number };
-  saturation: { value: number };
-  mousePos: { value: Vec2 };
-  mouseInfluence: { value: number };
-  noiseAmount: { value: number };
-  distortion: { value: number };
-}
 
 const LightRays: React.FC<LightRaysProps> = ({
   raysOrigin = "top-center",

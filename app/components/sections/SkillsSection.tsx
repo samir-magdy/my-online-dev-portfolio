@@ -1,19 +1,7 @@
 "use client";
 
-import FadeInView from "./FadeInView";
-
-const skills = [
-  "JavaScript",
-  "TypeScript",
-  "React.js",
-  "Node.js",
-  "Express.js",
-  "Next.js",
-  "SQL/NoSQL",
-  "TailwindCSS",
-  "Git/Github",
-  "REST APIs",
-];
+import FadeInView from "../effects/FadeInView";
+import { skills } from "@/app/data/skills";
 
 export default function SkillsSection() {
   return (
