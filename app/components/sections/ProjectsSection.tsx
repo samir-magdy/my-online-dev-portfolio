@@ -16,12 +16,12 @@ export default function ProjectsSection() {
       />
 
       <div className="max-w-3xl mx-auto">
-        <h1
+        <h2
           id="portfolio-heading"
           className="main-headers text-3xl md:text-4xl font-bold mb-5 text-center text-white"
         >
           Projects
-        </h1>
+        </h2>
 
         <div className="grid grid-cols-1 gap-20 mx-auto">
           {projects.map((project, index) => (

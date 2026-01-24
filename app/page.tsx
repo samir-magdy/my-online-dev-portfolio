@@ -31,7 +31,7 @@ export default function MinimalModernPortfolio() {
         />
       </div>
       {/* Content on top of LightRays */}
-      <div id="main-content" className="relative z-10">
+      <div id="content-layer" className="relative z-10">
         <HeroSection />
         <ProjectsSection />
         <SkillsSection />

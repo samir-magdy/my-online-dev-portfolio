@@ -12,12 +12,12 @@ export default function SkillsSection() {
     >
       <div className="max-w-3xl mx-auto">
         <FadeInView className="text-3xl md:text-4xl font-bold mb-6 md:mb-16 text-center text-white">
-          <h1
+          <h2
             id="skills-heading"
             className="text-3xl md:text-4xl font-bold mb-6 md:mb-8 text-center text-white main-headers"
           >
             Skills
-          </h1>
+          </h2>
         </FadeInView>
 
         <FadeInView delay={0.2}>

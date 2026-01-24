@@ -165,7 +165,7 @@ export default function HeroSection() {
         className="h-screen flex items-center justify-center relative overflow-hidden"
       >
         <div className="relative z-10">
-          <motion.div
+          <motion.h1
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8 }}
@@ -176,7 +176,7 @@ export default function HeroSection() {
             }}
           >
             Samir Magdy
-          </motion.div>
+          </motion.h1>
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}

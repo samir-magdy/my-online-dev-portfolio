@@ -59,9 +59,9 @@ export default function ProjectCard({ project, delay }: ProjectCardProps) {
           </div>
 
           <figcaption className="px-6 pb-6 flex flex-col flex-grow">
-            <h2 className="text-xl md:text-2xl font-bold mb-4 text-white tracking-wide">
+            <h3 className="text-xl md:text-2xl font-bold mb-4 text-white tracking-wide">
               {project.title}
-            </h2>
+            </h3>
 
             <div className="flex flex-col flex-grow">
               <p className="text-gray-100 text-lg/7 flex-grow tracking-wide">

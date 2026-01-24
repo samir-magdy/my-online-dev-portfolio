@@ -15,12 +15,12 @@ export default function ContactSection() {
           {/* Left Column - Title, Description, Email, Social Icons */}
           <div className="flex flex-col justify-between items-center">
             <FadeInView className="text-3xl md:text-4xl font-bold text-white mx-auto mb-4">
-              <h1
+              <h2
                 id="contact-heading"
                 className="text-3xl md:text-4xl font-bold text-center text-white main-headers"
               >
                 Get In Touch
-              </h1>
+              </h2>
             </FadeInView>
             <FadeInView
               delay={0.2}
