@@ -153,7 +153,7 @@ export default function RootLayout({
         />
       </head>
       <body className={`${geistSans.variable} antialiased`}>
-        <div id="page-loader" aria-label="Loading">
+        <div id="page-loader" role="status" aria-label="Loading">
           <div className="spinner" />
         </div>
         <script

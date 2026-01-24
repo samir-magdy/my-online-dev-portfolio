@@ -1,6 +1,6 @@
-import wikiScnShot from "../../public/project-screenshots/wikispace.png";
-import yallaScnShot from "../../public/project-screenshots/yallashop.png";
-import spaceReflexScnShot from "../../public/project-screenshots/space-reflex.png";
+import wikiScnShot from "../../public/project-screenshots/wikispace.webp";
+import yallaScnShot from "../../public/project-screenshots/yallashop.webp";
+import spaceReflexScnShot from "../../public/project-screenshots/space-reflex.webp";
 
 export interface ProjectSchema {
   applicationCategory: string;

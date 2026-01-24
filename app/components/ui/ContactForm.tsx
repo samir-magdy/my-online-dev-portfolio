@@ -62,83 +62,86 @@ export default function ContactForm() {
       onSubmit={handleSubmit}
       aria-label="Contact form"
     >
-      <div>
-        <label
-          htmlFor="name"
-          className="block text-sm font-bold text-gray-300 mb-2 ms-1"
-        >
-          Name{" "}
-          <span className="text-orange-600 opacity-90" aria-label="required">
-            *
-          </span>
-        </label>
-        <input
-          type="text"
-          id="name"
-          required
-          aria-required="true"
-          placeholder="Your name"
-          className="mb-4 text-xl w-full h-14 px-4 rounded-lg border border-gray-700 bg-gray-900/95 text-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors"
-          value={formData.name}
-          onChange={(e) =>
-            setFormData((prev) => ({ ...prev, name: e.target.value }))
-          }
-        />
-      </div>
-
-      <div>
-        <label
-          htmlFor="email"
-          className="block text-sm font-bold text-gray-300 mb-2 ms-1"
-        >
-          Email{" "}
-          <span className="text-orange-600 opacity-90" aria-label="required">
-            *
-          </span>
-        </label>
-        <input
-          type="email"
-          id="email"
-          required
-          aria-required="true"
-          placeholder="Your email"
-          className="mb-4 text-xl w-full h-14 px-4 rounded-lg border border-gray-700 bg-gray-900/95 text-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors"
-          value={formData.email}
-          onChange={(e) =>
-            setFormData((prev) => ({ ...prev, email: e.target.value }))
-          }
-        />
-      </div>
-
-      <div>
-        <label
-          htmlFor="message"
-          className="block text-sm font-bold text-gray-300 mb-2 ms-1"
-        >
-          Message{" "}
-          <span className="text-orange-600 opacity-90" aria-label="required">
-            *
-          </span>
-        </label>
-        <textarea
-          id="message"
-          required
-          aria-required="true"
-          rows={4}
-          placeholder="Describe your project or inquiry..."
-          className="mb-4 text-xl w-full px-4 py-2 rounded-lg border border-gray-700 bg-gray-900/95 text-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors"
-          value={formData.message}
-          onChange={(e) =>
-            setFormData((prev) => ({ ...prev, message: e.target.value }))
-          }
-          onKeyDown={(e) => {
-            if (e.key === "Enter" && !e.shiftKey) {
-              e.preventDefault();
-              e.currentTarget.form?.requestSubmit();
+      <fieldset className="border-none p-0 m-0">
+        <legend className="sr-only">Contact information</legend>
+        <div>
+          <label
+            htmlFor="name"
+            className="block text-sm font-bold text-gray-300 mb-2 ms-1"
+          >
+            Name{" "}
+            <span className="text-orange-600 opacity-90" aria-label="required">
+              *
+            </span>
+          </label>
+          <input
+            type="text"
+            id="name"
+            required
+            aria-required="true"
+            placeholder="Your name"
+            className="mb-4 text-xl w-full h-14 px-4 rounded-lg border border-gray-700 bg-gray-900/95 text-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors"
+            value={formData.name}
+            onChange={(e) =>
+              setFormData((prev) => ({ ...prev, name: e.target.value }))
             }
-          }}
-        />
-      </div>
+          />
+        </div>
+
+        <div>
+          <label
+            htmlFor="email"
+            className="block text-sm font-bold text-gray-300 mb-2 ms-1"
+          >
+            Email{" "}
+            <span className="text-orange-600 opacity-90" aria-label="required">
+              *
+            </span>
+          </label>
+          <input
+            type="email"
+            id="email"
+            required
+            aria-required="true"
+            placeholder="Your email"
+            className="mb-4 text-xl w-full h-14 px-4 rounded-lg border border-gray-700 bg-gray-900/95 text-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors"
+            value={formData.email}
+            onChange={(e) =>
+              setFormData((prev) => ({ ...prev, email: e.target.value }))
+            }
+          />
+        </div>
+
+        <div>
+          <label
+            htmlFor="message"
+            className="block text-sm font-bold text-gray-300 mb-2 ms-1"
+          >
+            Message{" "}
+            <span className="text-orange-600 opacity-90" aria-label="required">
+              *
+            </span>
+          </label>
+          <textarea
+            id="message"
+            required
+            aria-required="true"
+            rows={4}
+            placeholder="Describe your project or inquiry..."
+            className="mb-4 text-xl w-full px-4 py-2 rounded-lg border border-gray-700 bg-gray-900/95 text-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors"
+            value={formData.message}
+            onChange={(e) =>
+              setFormData((prev) => ({ ...prev, message: e.target.value }))
+            }
+            onKeyDown={(e) => {
+              if (e.key === "Enter" && !e.shiftKey) {
+                e.preventDefault();
+                e.currentTarget.form?.requestSubmit();
+              }
+            }}
+          />
+        </div>
+      </fieldset>
       <button
         type="submit"
         disabled={status === "loading"}

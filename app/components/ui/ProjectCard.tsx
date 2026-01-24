@@ -30,7 +30,7 @@ export default function ProjectCard({ project, delay }: ProjectCardProps) {
     <FadeInView delay={delay}>
       <article className="bg-gray-900/70 rounded-xl overflow-hidden border border-gray-700/95 shadow-lg h-full flex flex-col">
         <figure className="flex flex-col flex-grow">
-          <div className="p-6">
+          <div className="p-4 md:p-6">
             <div
               className={`relative overflow-hidden rounded-xl ${isMobile ? "" : "cursor-none"}`}
               onMouseMove={handleMouseMove}
@@ -58,7 +58,7 @@ export default function ProjectCard({ project, delay }: ProjectCardProps) {
             </div>
           </div>
 
-          <figcaption className="px-6 pb-6 flex flex-col flex-grow">
+          <figcaption className="px-4 md:px-6 pb-4 md:pb-6 flex flex-col flex-grow">
             <h3 className="text-xl md:text-2xl font-bold mb-4 text-white tracking-wide">
               {project.title}
             </h3>
